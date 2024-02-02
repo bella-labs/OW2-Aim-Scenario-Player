@@ -87,7 +87,7 @@ def create_stats_hud():
 
     hudSubheader([i for i in localPlayer if localPlayer.menu_visible],
     "{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}\n{7}\n{8}\n{9}\n{10}\n{11}\n{12}\n{13}\n{14}\n{15}\n{16}\n{17}\n{18}\n{19}".format(
-            "Previous Scores:",
+            "\n---------------------\nPrevious Scores\n---------------------",
             eventPlayer.stat_data[0] if eventPlayer.stat_data[0] != null else "",
             eventPlayer.stat_data[1] if eventPlayer.stat_data[1] != null else "",
             eventPlayer.stat_data[2] if eventPlayer.stat_data[2] != null else "",
@@ -112,7 +112,7 @@ def create_stats_hud():
     ),
     HudPosition.RIGHT, 
     9999, 
-    Color.BLACK, 
+    Color.WHITE, 
     HudReeval.VISIBILITY_SORT_ORDER_STRING_AND_COLOR, 
     SpecVisibility.ALWAYS)
 
@@ -120,7 +120,7 @@ def create_stats_hud():
     "{0}{1}\n  {2}{3}".format(strings_misc[lang_type][0], localPlayer.score, strings_misc[lang_type][1], localPlayer.high_score),
     HudPosition.LEFT, 
     9999, 
-    Color.BLACK, 
+    Color.WHITE, 
     HudReeval.VISIBILITY_SORT_ORDER_STRING_AND_COLOR, 
     SpecVisibility.ALWAYS)
 
