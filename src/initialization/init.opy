@@ -70,7 +70,7 @@ rule "anticrash":
     @Condition getServerLoad() >= 225
 
     wait(2, Wait.ABORT_WHEN_FALSE)
-    smallMessage(hostPlayer, "    Server Avg Exceeded 230 for 2 seconds. Slow Motion Enabled.")
+    smallMessage(getAllPlayers(), "    Server Avg Exceeded 230 for 2 seconds. Slow Motion Enabled.")
     bigMessage(hostPlayer, "    If you see this message either:\na) the server sucks\nb) the dev sucks\nc) your config takes too many resources")
     setSlowMotion(10)
     waitUntil(getServerLoad() < 175, 9999)
