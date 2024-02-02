@@ -27,16 +27,12 @@ globalvar menu_wait
 globalvar strings_prompt
 globalvar strings_help
 globalvar strings_inputs
-globalvar strings_main_menu
-globalvar strings_bot_menu
-globalvar strings_prof_menu
-globalvar strings_sce_menu
-globalvar strings_on_titles
-globalvar strings_options
-globalvar strings_tags
-globalvar strings_instructions
-globalvar strings_misc
 globalvar strings_symbols
+globalvar strings_host_menu
+globalvar strings_host_alt
+globalvar strings_player_menu
+globalvar strings_player_alt
+globalvar strings_misc
 
 
 playervar scenario_names
@@ -247,12 +243,11 @@ playervar menu_item_title_on
 
 
 
-
+subroutine log_run
 
 playervar menu_loaded
 
 globalvar menu_color_label_header
-globalvar menu_color_label_subtext
 globalvar menu_color_off_index
 globalvar menu_color_on_index
 globalvar menu_colors_custom
@@ -268,7 +263,10 @@ subroutine enable_player_input
 subroutine disable_player_input
 
 subroutine setup_menu_custom
-subroutine create_submenu_main
+subroutine create_host_menu
+subroutine create_player_menu
+subroutine destroy_menu
+subroutine create_stats_hud
 
 ### Menu Labels
 subroutine increment_for_menu_label
@@ -283,3 +281,8 @@ subroutine new_menu_item_cycle
 subroutine new_menu_item_2var
 subroutine new_menu_item_3var
 subroutine new_menu_item_4var
+
+enum MENU_TYPE:
+    NONE = 0,
+    HOST,
+    PLAYER

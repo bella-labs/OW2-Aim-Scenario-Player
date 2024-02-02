@@ -1,3 +1,13 @@
+globalvar match_timer
+
+rule "Initialize: Setup":
+
+    if match_timer == 0:
+        pauseMatchTime()
+    # Disable Inspector for performance
+    disableInspector()
+
+
 rule "Initialize: Workshop Settings":
 
     data_loaded[DATA_TYPE.CONTROLS] = false
@@ -17,6 +27,8 @@ rule "Initialize: Workshop Settings":
     user_controls[8] = createWorkshopSetting(enum["Move Forward   |   앞으로 이동   |   前行", "Move Backward   |   뒤로 이동   |   向后移动", "Move Left   |   왼쪽으로 이동   |   向左移动   |", "Move Right   |   오른쪽으로 이동   |   向右转", "Interact   |   상호 작용   |   互动", "Jump   |   점프   |   跳", "Crouch   |   웅크리기   |   蹲", "Melee   |   근접 공격   |   近战", "Primary Fire   |   기본 발사   |   主要攻擊", "Secondary Fire   |   보조 발사   |   次要攻擊", "Reload   |   재장전   |   裝填", "Ability 1   |   기술 1   |   技能 1", "Ability 2   |   기술 2   |   技能 2", "Ultimate   |   궁극기   |   絕招"], "2. Configure Inputs   |   입력 구성   |   配置输入", "Next Subitem", 5, 9)
     user_controls[9] = createWorkshopSetting(enum["Move Forward   |   앞으로 이동   |   前行", "Move Backward   |   뒤로 이동   |   向后移动", "Move Left   |   왼쪽으로 이동   |   向左移动   |", "Move Right   |   오른쪽으로 이동   |   向右转", "Interact   |   상호 작용   |   互动", "Jump   |   점프   |   跳", "Crouch   |   웅크리기   |   蹲", "Melee   |   근접 공격   |   近战", "Primary Fire   |   기본 발사   |   主要攻擊", "Secondary Fire   |   보조 발사   |   次要攻擊", "Reload   |   재장전   |   裝填", "Ability 1   |   기술 1   |   技能 1", "Ability 2   |   기술 2   |   技能 2", "Ultimate   |   궁극기   |   絕招"], "2. Configure Inputs   |   입력 구성   |   配置输入", "Set Vector / Action Button", 10, 10)
     user_controls[10] = createWorkshopSetting(enum["Move Forward   |   앞으로 이동   |   前行", "Move Backward   |   뒤로 이동   |   向后移动", "Move Left   |   왼쪽으로 이동   |   向左移动   |", "Move Right   |   오른쪽으로 이동   |   向右转", "Interact   |   상호 작용   |   互动", "Jump   |   점프   |   跳", "Crouch   |   웅크리기   |   蹲", "Melee   |   근접 공격   |   近战", "Primary Fire   |   기본 발사   |   主要攻擊", "Secondary Fire   |   보조 발사   |   次要攻擊", "Reload   |   재장전   |   裝填", "Ability 1   |   기술 1   |   技能 1", "Ability 2   |   기술 2   |   技能 2", "Ultimate   |   궁극기   |   絕招"], "2. Configure Inputs   |   입력 구성   |   配置输入", "Turbo Cycle", 11, 11)
+
+    match_timer = createWorkshopSetting(int[0:60], "9. Server Settings", "Match Timer (in minutes) (Set for replay support)", 0, 2)
 
     for loop_index in range(0,len(user_controls),1):
         switch user_controls[loop_index]:

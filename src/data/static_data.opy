@@ -242,7 +242,7 @@ rule "Load Static Data":
 
                     
 
-rule "load_language_data":
+rule "Load Language Data":
     @Event global
 
     data_loaded[DATA_TYPE.STATIC] = false
@@ -278,6 +278,7 @@ rule "load_language_data":
             ""
         ]
     ]
+
     strings_help = [
         [
             ["Previous Item"],
@@ -312,6 +313,7 @@ rule "load_language_data":
             ["", "", "", ""]
         ]
     ]
+
     strings_inputs = [
         [
             "Forward", 
@@ -332,389 +334,73 @@ rule "load_language_data":
             ""
         ]
     ]
-    strings_main_menu = [
-        [
-            "For detailed documentation visit\nasm.bellalabs.dev\n", 
-            "Configure",
-            "Scenario  ▶",
-            "Bot       ▶",
-            "Movement  ▶",
-            "Test",
-            "Open Hero Select",
-            "Display Boundaries",
-            "Test Bot in Slot",
-            "Test Scenario",
-            "Reset Score",
-            "Export and Share",
-            "Display Export Instructions",
-            "Display Import Instructions",
-            "Create Export Package"
-        ],
-        [
-            "*\n*\n", 
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        [
-            "\n\n", 
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
-    ]
-    strings_bot_menu = [
-        [
-            "Bot Settings",
-            "◀ Main Menu",
-            "Bot Slot",
-            "Select Bot Slot",
-            "Copy Current Bot to Slot",
-            "Spawn and Boundaries",
-            "Spawn",
-            "Facing",
-            "Boundary",
-            "Dimentions",
-            "Distance",
-            "Bot Parameters",
-            "Hero Pool",
-            "Health",
-            "Speed",
-            "Scale",
-            "Gravity",
-            "Movement Profiles",
-            "Profile Status",
-            "Profile Order",
-            "Custom Script"
-        ],
+
+    strings_symbols = ["—————————————————————————\n"]
+
+    strings_host_menu = [
         [
             "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
-    ]
-    strings_prof_menu = [
-        [
-            "Movement Profile Settings", 
-            "◀ Main Menu",
-            "Slot", 
-            "Select Profile Slot",
-            "Copy Current Profile to Slot",
-            "Horizontal Movement",
-            "Horizontal Type", 
-            "Left",
-            "Right",
-            "Forward",
-            "Backward",
-            "Vertical Movement",
-            "Vertical Type",
-            "Jump",
-            "Crouch",
-            "Idle Movement",
-            "Left / Right Idle",
-            "Forward / Backward Idle"
-        ],
-        [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
-    ]
-    strings_sce_menu = [
-        [
-            "Scenario Settings",
-            "◀ Main Menu",
             "Player",
-            "Spawn Position",
-            "Spawn Facing",
-            "Speed",
-            "Gravity",
+            "Change Hero",
             "Scenario",
+            "Select Scenario",
             "Scenario Type",
-            "Bot Respawn",
-            "Points",
-            "Strafe Points",
-            "Custom Script"
+            "Start Scenario"
         ],
         [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
 
         ],
         [
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            ""
+
+        ]
+
+    ]
+
+    strings_host_alt = [
+        [
+            "Stop Scenario"
+        ],
+        [
+
+        ],
+        [
+
         ]
     ]
-    strings_on_titles = [
+
+    strings_player_menu =   [
         [
             "",
-            "Slot",
-            "Profile",
-            "Hero"
+            "Player",
+            "Change Hero",
+            "Scenario",
+            "Start Scenario"
         ],
         [
-            "",
-            "",
-            "",
-            ""
+
         ],
         [
-            "",
-            "",
-            "",
-            ""
+            
         ]
     ]
-    strings_options = [
+
+    strings_player_alt = [
         [
-            ["Disabled", "Enabled"], 
-            ["Timed", "Score Limit"],
-            ["Random", "Health", "Elims (Target)", "Looping (Target)"],
-            ["Fixed Position", "Random in Boundary", "Random Walkable in Boundary"],
-            ["Fixed", "Player"],
-            ["Reverse", "Stop", "Teleport"],
-            ["In Order", "Randomized"],
-            ["Inputs", "Impulse"],
-            ["Timed", "Elims"],
-            ["Simultaneous", "In Slot Order"]
+            "Stop Scenario",
+            "Request Host Start Scenario"
         ],
         [
-            ["사용 안 함", "사용"],
-            ["", ""],
-            ["", ""],
-            ["", "", "", ""],
-            ["", "", ""],
-            ["", ""],
-            ["", ""],
-            ["", ""],
-            ["", ""]
-        ], 
+
+        ],
         [
-            ["禁用", "已启用"],
-            ["", ""],
-            ["", ""],
-            ["", "", "", ""],
-            ["", "", ""],
-            ["", ""],
-            ["", ""],
-            ["", ""],
-            ["", ""]
+
         ]
-    ]
-    strings_tags = [
-        [
-            [],
-            ["Health %: ", "HPS: ", "Wait Until Heal: "], 
-            ["min: ", "max: "],
-            ["Type: ", "min: ", "max: ", "target: "],
-            ["Profile: ", "Weight: "],
-            ["Type: ", "min: ", "max: ", "time: "],
-            ["X: ", "Y: ", "Z: "],
-            ["Type: ", "X: ", "Y: ", "Z: "],
-            ["Angle: ", "Length: ", "Height: ", "Width: "],
-            ["Type: ", "Impulse Strength: ", "Impulse Interval: "],
-            ["Weight : ", "Min Time : ", "Max Time : "],
-            ["Chance %: ", "Min Time : ", "Max Time : ", "Interval: "],
-            ["Type: ", "Seconds: "],
-            ["Type: ", "Score: "],
-            ["Bodyshot: ", "Headshot: ", "Elim: "],
-            ["Points Per Second: ", "Min Time: ", "Max Time: "]
-        ],
-        [
-            ["", "", ""], 
-            ["", ""],
-            ["", "", "", ""],
-            ["", "", ""],
-            ["", "", "", ""],
-            ["", "", "", ""],
-            ["", "", ""],
-            ["", ""],
-            ["", "", "", ""],
-            ["", "", "", ""],
-            ["", "", "", ""],
-            ["", "", "", ""],
-            ["", "", "", ""],
-            ["", "", "", ""],
-            ["", ""],
-            ["", ""],
-            ["", "", ""],
-            ["", "", ""]
-        ], 
-        [
-            ["", "", ""], 
-            ["", ""],
-            ["", "", "", ""],
-            ["", "", ""],
-            ["", "", "", ""],
-            ["", "", "", ""],
-            ["", "", ""],
-            ["", ""],
-            ["", "", "", ""],
-            ["", "", "", ""],
-            ["", "", "", ""],
-            ["", "", "", ""],
-            ["", "", "", ""],
-            ["", "", "", ""],
-            ["", ""],
-            ["", ""],
-            ["", "", ""],
-            ["", "", ""]
-        ]
-    ]
-    strings_instructions = [
-        [
-            "How to export your configuration:\n1. Scroll Down the In-Game Menu and select \"Create Export Package\".\n* This will package the data into a new bot which we will copy the data from.\n2. Open the Overwatch menu (esc).\n3. Select \"Open Workshop Inspector\".\n4. Select the dropdown menu \"Variable Target\".\n5. Select \"Winston\".\n6. In the middle panel \"Variables\", you should see a list of variables and numbers.\nIf the \"Variables\" panel is empty do the following:\n    6a. Move the blue slider above \"Variable Target\" slightly backwards.\n    6b. Move the blue slider completely forwards.\n7. Select the rightmost button from the bottom left that looks like this: [(x)]\n* When you hover over the button it will say:\n* \"Copy clipboard current variables for current variables target as workshop actions\"\n8. Your settings variables will now be in your clipboard.\n    8a. To save your work:\n        paste your settings into a text file on your computer\n    or\n        Follow the import instructions up to step 6, then save a preset.\n    8b. To share your scenario or resume your work please see \"import instructions\".",
-            "How to import your configuration:\n1. Select the import code button from the settings page of the lobby menu.\n2. Enter the code\n    2a. If you are resuming creating a scenario enter code for the Aim Scenario Maker (SHRBX)\n    2b. If you want to share your scenario use the code for the Aim Scenario Player (5XDFV)\n3.Select the \"Workshop\" tile with black text.\n4. Scroll to the top of the first page\n5. Click the \">\" symbol to the left of the first rule titled \"Paste Player Variables Here\"\n6. In the \"actions\" column to the right, select the orange \"paste\" button.\n7a. If you are resuming work on the Aim Scenario Maker, you may start the match.\n7b. If you are ready to share your scenario please continue with the rest of the instructions.\n8. Under the second rule \"Scenario Info\"\n7. Start/Restart the Match and your settings will be loaded.\n    7a. If you are using the Aim Scenario Maker code you may now continue designing your scenario, \n    7a. If you are using the Aim Scenario Player please continue.\n8. Click the \">\" symbol to the left of the first rule titled \"Scenario Info\"\n9. Click the action \"Global.scenario_name\".\n10. Under the field \"String\" enter the name for your scenario.\n11. Click the orange \"OK\" button.\n12. Click the action \"Global.scenario_author\".\n13. Under the field \"String\" enter the name would would like to be credited as.\n14. Click the orange \"OK\" button.\n15. You may now create a share code by:\n    15a. Selecting \"Share Code\" in the lobby settings menu (Icon with 3 connected dots)\n    15b. Selecting \"Continue\"\n16. To have your scenario's share code listed with others:\n    16a. Share the code on Workshop.codes. Mark it as a derivation of the Aim Scenario Player (5XDFV)\n         so that it can be listed with other codes.\n    16b. Join my discord and paste the code in the new scenarios channel\n"
-        ],
-        [
-            "",
-            "",
-            ""
-        ],
-        [   
-            "",
-            "",
-            ""
-        ],
     ]
     strings_misc = [
         [
-            "Iris",
-            "Server Load (Curr/Avg/Peak)",
-            "Position",
-            "Facing",
-            "Score",
-            "Last",
-            "High",
-            "Points",
-            "Seconds"
-
-        ], 
-        [
-            "데이터 저장소",
-
-        ], 
-        [
-            "数据存储",
-
+            "Current Score: ",
+            "Highest Score: "
         ]
     ]
-    strings_symbols = ["—————————————————————————\n"]
     
-
     data_loaded[DATA_TYPE.STATIC] = true

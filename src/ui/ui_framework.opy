@@ -1,3 +1,22 @@
+rule "Menu Initialization: Set Static Global Variables":
+    @Event global
+
+    # Menu Colors
+
+    #menu_color_label_header = Color.WHITE
+    #menu_color_on_index = Color.SKY_BLUE
+    menu_color_off_index = Color.WHITE
+
+    menu_color_on_index = rgb(100,200,240) 
+    menu_color_label_header = rgb(255,150,80)
+
+    menu_colors_custom[0] = rgb(255,100,120)
+    menu_colors_custom[1] = rgb(100,200,120)
+    #menu_colors_custom[2] = rgb(240,120,100) 
+    #menu_colors_custom[3] = rgb(230,190,60) 
+    #menu_colors_custom[4] = rgb(110,150,250)
+
+
 rule "Menu Input Listener: Toggle Menu":
     @Event eachPlayer
     @Team 1
@@ -5,6 +24,7 @@ rule "Menu Input Listener: Toggle Menu":
     @Condition (user_controls[0] <= INPUT_OPTIONS.VECT_RIGHT and eventPlayer.getThrottle() == ui_inputs[0]) or (user_controls[0] > INPUT_OPTIONS.VECT_RIGHT and eventPlayer.isHoldingButton(ui_inputs[0]))
 
     wait(ui_delay, Wait.ABORT_WHEN_FALSE)
+
     if eventPlayer.menu_visible:
         eventPlayer.menu_visible = false
     else:
@@ -30,7 +50,6 @@ rule "Menu Input Listener: Menu Up":
 rule "Menu Input Listener: Menu Down":
     @Event eachPlayer
     @Team 1
-    @Condition eventPlayer == hostPlayer
     @Condition eventPlayer.menu_visible 
     @Condition (user_controls[2] <= INPUT_OPTIONS.VECT_RIGHT and eventPlayer.getThrottle() == ui_inputs[2]) or (user_controls[2] > INPUT_OPTIONS.VECT_RIGHT and eventPlayer.isHoldingButton(ui_inputs[2]))
 
@@ -227,14 +246,7 @@ def setup_menu():
     eventPlayer.menu_item_size = -1
     eventPlayer.submenu_size = 0
 
-    # Menu Colors
-    menu_color_label_header = Color.WHITE
-    menu_color_label_subtext = Color.ORANGE
-
-    menu_color_off_index = Color.WHITE
-    menu_color_on_index = Color.SKY_BLUE
-
-
+    
 def enable_player_input():
     @Name "SUB: enable_player_input"
 
