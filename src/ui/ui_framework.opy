@@ -188,31 +188,31 @@ def create_help_hud():
     eventPlayer.menu_help_index = help_data[HELP_TYPE.DEFAULT]
     
     eventPlayer.menu_help_display = [   
-                            strings_help[lang_type][0][eventPlayer.menu_help_index[0]], 
-                            strings_help[lang_type][1][eventPlayer.menu_help_index[1]], 
-                            strings_help[lang_type][2][eventPlayer.menu_help_index[2]], 
-                            strings_help[lang_type][3][eventPlayer.menu_help_index[3]], 
-                            strings_help[lang_type][4][eventPlayer.menu_help_index[4]], 
-                            strings_help[lang_type][5][eventPlayer.menu_help_index[5]], 
-                            strings_help[lang_type][6][eventPlayer.menu_help_index[6]], 
-                            strings_help[lang_type][7][eventPlayer.menu_help_index[7]], 
-                            strings_help[lang_type][8][eventPlayer.menu_help_index[8]],
-                            strings_help[lang_type][9][eventPlayer.menu_help_index[9]],
+                            strings_help[eventPlayer.lang_type][0][eventPlayer.menu_help_index[0]], 
+                            strings_help[eventPlayer.lang_type][1][eventPlayer.menu_help_index[1]], 
+                            strings_help[eventPlayer.lang_type][2][eventPlayer.menu_help_index[2]], 
+                            strings_help[eventPlayer.lang_type][3][eventPlayer.menu_help_index[3]], 
+                            strings_help[eventPlayer.lang_type][4][eventPlayer.menu_help_index[4]], 
+                            strings_help[eventPlayer.lang_type][5][eventPlayer.menu_help_index[5]], 
+                            strings_help[eventPlayer.lang_type][6][eventPlayer.menu_help_index[6]], 
+                            strings_help[eventPlayer.lang_type][7][eventPlayer.menu_help_index[7]], 
+                            strings_help[eventPlayer.lang_type][8][eventPlayer.menu_help_index[8]],
+                            strings_help[eventPlayer.lang_type][9][eventPlayer.menu_help_index[9]],
                         ]
 
     hudSubheader([i for i in localPlayer], 
-    "{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}{11}{12}".format("{0} {1} {2} {3} {4}\n".format(strings_prompt[lang_type][0] if ui_delay > 0 else strings_prompt[lang_type][1], strings_inputs[lang_type][user_controls[0]] if user_controls[0] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[0]), strings_prompt[lang_type][2], strings_prompt[lang_type][3] if eventPlayer.menu_visible else strings_prompt[lang_type][4], strings_prompt[lang_type][5]), 
+    "{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}{11}{12}".format("{0} {1} {2} {3} {4}\n".format(strings_prompt[eventPlayer.lang_type][0] if ui_delay > 0 else strings_prompt[eventPlayer.lang_type][1], strings_inputs[eventPlayer.lang_type][user_controls[0]] if user_controls[0] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[0]), strings_prompt[eventPlayer.lang_type][2], strings_prompt[eventPlayer.lang_type][3] if eventPlayer.menu_visible else strings_prompt[eventPlayer.lang_type][4], strings_prompt[eventPlayer.lang_type][5]), 
         strings_symbols[0], 
-        "{0} : {1}\n".format(strings_inputs[lang_type][user_controls[1]] if user_controls[1] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[1]), eventPlayer.menu_help_display[0]) if eventPlayer.menu_visible else "",
-        "{0} : {1}\n".format(strings_inputs[lang_type][user_controls[2]] if user_controls[2] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[2]), eventPlayer.menu_help_display[1]) if eventPlayer.menu_visible else "",
-        "{0} : {1}\n".format(strings_inputs[lang_type][user_controls[3]] if user_controls[3] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[3]), eventPlayer.menu_help_display[2]) if eventPlayer.menu_visible else "",
-        "{0} : {1}\n".format(strings_inputs[lang_type][user_controls[4]] if user_controls[4] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[4]), eventPlayer.menu_help_display[3]) if eventPlayer.menu_visible else "",
-        "{0} : {1}\n".format(strings_inputs[lang_type][user_controls[5]] if user_controls[5] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[5]), eventPlayer.menu_help_display[4]) if eventPlayer.menu_visible else "",
-        "{0} : {1}\n".format(strings_inputs[lang_type][user_controls[6]] if user_controls[6] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[6]), eventPlayer.menu_help_display[5]) if eventPlayer.menu_visible else "",
-        "{0} : {1}\n".format(strings_inputs[lang_type][user_controls[7]] if user_controls[7] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[7]), eventPlayer.menu_help_display[6]) if eventPlayer.menu_visible else "",
-        "{0} : {1}\n".format(strings_inputs[lang_type][user_controls[8]] if user_controls[8] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[8]), eventPlayer.menu_help_display[7]) if eventPlayer.menu_visible else "",
-        "{0} : {1}\n".format(strings_inputs[lang_type][user_controls[9]] if user_controls[9] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[9]), eventPlayer.menu_help_display[8]) if eventPlayer.menu_visible else "",
-        "{0} : {1}\n".format(strings_inputs[lang_type][user_controls[10]] if user_controls[10] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[10]), eventPlayer.menu_help_display[9]) if eventPlayer.menu_visible else "",
+        "{0} : {1}\n".format(strings_inputs[eventPlayer.lang_type][user_controls[1]] if user_controls[1] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[1]), eventPlayer.menu_help_display[0]) if eventPlayer.menu_visible else "",
+        "{0} : {1}\n".format(strings_inputs[eventPlayer.lang_type][user_controls[2]] if user_controls[2] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[2]), eventPlayer.menu_help_display[1]) if eventPlayer.menu_visible else "",
+        "{0} : {1}\n".format(strings_inputs[eventPlayer.lang_type][user_controls[3]] if user_controls[3] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[3]), eventPlayer.menu_help_display[2]) if eventPlayer.menu_visible else "",
+        "{0} : {1}\n".format(strings_inputs[eventPlayer.lang_type][user_controls[4]] if user_controls[4] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[4]), eventPlayer.menu_help_display[3]) if eventPlayer.menu_visible else "",
+        "{0} : {1}\n".format(strings_inputs[eventPlayer.lang_type][user_controls[5]] if user_controls[5] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[5]), eventPlayer.menu_help_display[4]) if eventPlayer.menu_visible else "",
+        "{0} : {1}\n".format(strings_inputs[eventPlayer.lang_type][user_controls[6]] if user_controls[6] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[6]), eventPlayer.menu_help_display[5]) if eventPlayer.menu_visible else "",
+        "{0} : {1}\n".format(strings_inputs[eventPlayer.lang_type][user_controls[7]] if user_controls[7] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[7]), eventPlayer.menu_help_display[6]) if eventPlayer.menu_visible else "",
+        "{0} : {1}\n".format(strings_inputs[eventPlayer.lang_type][user_controls[8]] if user_controls[8] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[8]), eventPlayer.menu_help_display[7]) if eventPlayer.menu_visible else "",
+        "{0} : {1}\n".format(strings_inputs[eventPlayer.lang_type][user_controls[9]] if user_controls[9] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[9]), eventPlayer.menu_help_display[8]) if eventPlayer.menu_visible else "",
+        "{0} : {1}\n".format(strings_inputs[eventPlayer.lang_type][user_controls[10]] if user_controls[10] <= INPUT_OPTIONS.VECT_RIGHT else buttonString(ui_inputs[10]), eventPlayer.menu_help_display[9]) if eventPlayer.menu_visible else "",
         strings_symbols[0] if eventPlayer.menu_visible else ""),
         HudPosition.LEFT,
         -1,
@@ -225,13 +225,13 @@ def update_help_data():
     @Name "SUB: update_help_data"
 
     eventPlayer.menu_help_index = eventPlayer.menu_item_help[eventPlayer.menu_index]
-    for eventPlayer.help_index in range(0, len(strings_help[lang_type]), 1):
+    for eventPlayer.help_index in range(0, len(strings_help[eventPlayer.lang_type]), 1):
         if (eventPlayer.help_index == 2 or eventPlayer.help_index == 3) and (eventPlayer.menu_help_index[eventPlayer.help_index] == 1 or eventPlayer.menu_help_index[eventPlayer.help_index] == 2):
-            eventPlayer.menu_help_display[eventPlayer.help_index] = "{0}{1}".format(strings_help[lang_type][eventPlayer.help_index][eventPlayer.menu_help_index[eventPlayer.help_index]], small_steps[eventPlayer.menu_item_small_step[eventPlayer.menu_index][eventPlayer.subitem_index[eventPlayer.menu_index]]])
+            eventPlayer.menu_help_display[eventPlayer.help_index] = "{0}{1}".format(strings_help[eventPlayer.lang_type][eventPlayer.help_index][eventPlayer.menu_help_index[eventPlayer.help_index]], small_steps[eventPlayer.menu_item_small_step[eventPlayer.menu_index][eventPlayer.subitem_index[eventPlayer.menu_index]]])
         elif (eventPlayer.help_index == 4 or eventPlayer.help_index == 5) and (eventPlayer.menu_help_index[eventPlayer.help_index] == 1 or eventPlayer.menu_help_index[eventPlayer.help_index] == 2):
-            eventPlayer.menu_help_display[eventPlayer.help_index] = "{0}{1}".format(strings_help[lang_type][eventPlayer.help_index][eventPlayer.menu_help_index[eventPlayer.help_index]], large_steps[eventPlayer.menu_item_large_step[eventPlayer.menu_index][eventPlayer.subitem_index[eventPlayer.menu_index]]])
+            eventPlayer.menu_help_display[eventPlayer.help_index] = "{0}{1}".format(strings_help[eventPlayer.lang_type][eventPlayer.help_index][eventPlayer.menu_help_index[eventPlayer.help_index]], large_steps[eventPlayer.menu_item_large_step[eventPlayer.menu_index][eventPlayer.subitem_index[eventPlayer.menu_index]]])
         else:
-            eventPlayer.menu_help_display[eventPlayer.help_index] = strings_help[lang_type][eventPlayer.help_index][eventPlayer.menu_help_index[eventPlayer.help_index]]
+            eventPlayer.menu_help_display[eventPlayer.help_index] = strings_help[eventPlayer.lang_type][eventPlayer.help_index][eventPlayer.menu_help_index[eventPlayer.help_index]]
 
 
 def setup_menu():

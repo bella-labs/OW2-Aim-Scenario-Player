@@ -3,6 +3,7 @@ rule "Player Joined: Disable GameHUD":
     @Team 1
 
     eventPlayer.disableGamemodeHud()
+    eventPlayer.lang_type = lang_type
 
 
 rule "Player Spawned: Setup Host":

@@ -3,6 +3,8 @@ playervar stat_formatter
 playervar score
 playervar high_score
 
+subroutine set_item_data
+
 rule "Menu Setup: Create Host Menu":
     @Event eachPlayer
     @Condition eventPlayer == hostPlayer
@@ -69,15 +71,6 @@ rule "Menu Setup: Manage Host -> Player Change":
     eventPlayer.menu_loaded = MENU_TYPE.PLAYER
     eventPlayer.menu_visible = false
 
-
-def log_run():
-    @Name "SUB: log_run"
-
-    for eventPlayer.stat_formatter in range(20, 0, -1):
-        eventPlayer.stat_data[eventPlayer.stat_formatter] = eventPlayer.stat_data[eventPlayer.stat_formatter - 1]
-
-    eventPlayer.stat_data[0] = eventPlayer.score
-
     
 def create_stats_hud():
     @Name "SUB: create_stats_hud"
@@ -117,7 +110,7 @@ def create_stats_hud():
     SpecVisibility.ALWAYS)
 
     hudSubheader([i for i in localPlayer],
-    "{0}{1}\n  {2}{3}".format(strings_misc[lang_type][0], localPlayer.score, strings_misc[lang_type][1], localPlayer.high_score),
+    "{0}{1}\n  {2}{3}".format(strings_misc[eventPlayer.lang_type][0], localPlayer.score, strings_misc[eventPlayer.lang_type][1], localPlayer.high_score),
     HudPosition.LEFT, 
     9999, 
     Color.WHITE, 
@@ -137,42 +130,42 @@ def create_host_menu():
 
     # (Subtext) ???
     increment_for_menu_label()
-    eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_host_menu[lang_type][eventPlayer.menu_max_pos]
+    eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_host_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     new_menu_label_subheader()
 
     # (Header) Player
     increment_for_menu_label()
-    eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_host_menu[lang_type][eventPlayer.menu_max_pos]
+    eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_host_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     new_menu_label_subtext()
 
     # (Selection) Change Hero
     increment_for_menu_item()
-    eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_host_menu[lang_type][eventPlayer.menu_max_pos]
+    eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_host_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     eventPlayer.menu_item_title_on[eventPlayer.menu_item_size] = eventPlayer.menu_item_title_off[eventPlayer.menu_item_size]
     new_menu_item_selection()
 
     # (Header) Scenario
     increment_for_menu_label()
-    eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_host_menu[lang_type][eventPlayer.menu_max_pos]
+    eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_host_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     new_menu_label_subtext()
 
     # (Selection) Select Scenario
     increment_for_menu_item()
-    eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_host_menu[lang_type][eventPlayer.menu_max_pos]
+    eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_host_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     eventPlayer.menu_item_title_on[eventPlayer.menu_item_size] = eventPlayer.menu_item_title_off[eventPlayer.menu_item_size]
     new_menu_item_selection()
-    #if len(scenarios) <= 1:
-    #    eventPlayer.menu_item_hidden[eventPlayer.menu_item_size] = true
+    if len(scenarios) <= 1:
+        eventPlayer.menu_item_hidden[eventPlayer.menu_item_size] = true
 
     # (Selection) Scenario Type
     increment_for_menu_item()
-    eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_host_menu[lang_type][eventPlayer.menu_max_pos]
+    eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_host_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     eventPlayer.menu_item_title_on[eventPlayer.menu_item_size] = eventPlayer.menu_item_title_off[eventPlayer.menu_item_size]
     new_menu_item_selection()
 
     # (Selection) Start Scenario
     increment_for_menu_item()
-    eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_host_menu[lang_type][eventPlayer.menu_max_pos]
+    eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_host_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     eventPlayer.menu_item_title_on[eventPlayer.menu_item_size] = eventPlayer.menu_item_title_off[eventPlayer.menu_item_size]
     new_menu_item_selection()
  
@@ -182,27 +175,37 @@ def create_player_menu():
 
     # (Subtext) ???
     increment_for_menu_label()
-    eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_player_menu[lang_type][eventPlayer.menu_max_pos]
+    eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_player_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     new_menu_label_subheader()
 
     # (Header) Player
     increment_for_menu_label()
-    eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_player_menu[lang_type][eventPlayer.menu_max_pos]
+    eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_player_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     new_menu_label_subtext()
 
     # (Selection) Change Hero
     increment_for_menu_item()
-    eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_player_menu[lang_type][eventPlayer.menu_max_pos]
+    eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_player_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     eventPlayer.menu_item_title_on[eventPlayer.menu_item_size] = eventPlayer.menu_item_title_off[eventPlayer.menu_item_size]
     new_menu_item_selection()
 
     # (Header) Scenario
     increment_for_menu_label()
-    eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_player_menu[lang_type][eventPlayer.menu_max_pos]
+    eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_player_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     new_menu_label_subtext()
 
     # (Selection) Start Scenario
     increment_for_menu_item()
-    eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_player_menu[lang_type][eventPlayer.menu_max_pos]
+    eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_player_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     eventPlayer.menu_item_title_on[eventPlayer.menu_item_size] = eventPlayer.menu_item_title_off[eventPlayer.menu_item_size]
     new_menu_item_selection()
+
+
+def set_item_data():
+    @Name "SUB: set_item_data"
+
+    eventPlayer.menu_item_var_tags[eventPlayer.action_var_2] = strings_tags[eventPlayer.lang_type][item_data[eventPlayer.action_var][0]]
+    eventPlayer.menu_item_range[eventPlayer.action_var_2] = item_data[eventPlayer.action_var][1]
+    eventPlayer.menu_item_small_step[eventPlayer.action_var_2] = item_data[eventPlayer.action_var][2]
+    eventPlayer.menu_item_large_step[eventPlayer.action_var_2] = item_data[eventPlayer.action_var][3]
+    eventPlayer.menu_item_help[eventPlayer.action_var_2] = help_data[item_data[eventPlayer.action_var][4]]

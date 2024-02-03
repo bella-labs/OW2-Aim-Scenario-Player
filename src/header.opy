@@ -12,6 +12,7 @@ globalvar ui_inputs
 globalvar scenario
 globalvar scenarios
 globalvar scenario_index
+globalvar scenario_type
 
 globalvar scenario_names
 globalvar scenario_authors
@@ -33,7 +34,8 @@ globalvar strings_host_alt
 globalvar strings_player_menu
 globalvar strings_player_alt
 globalvar strings_misc
-
+globalvar strings_options
+globalvar strings_tags
 
 playervar scenario_names
 playervar scenario_authors
@@ -239,13 +241,14 @@ playervar menu_label
 playervar menu_item_hidden
 playervar menu_item_title_off
 playervar menu_item_title_on
-
+playervar menu_item_range
 
 
 
 subroutine log_run
 
 playervar menu_loaded
+playervar lang_type
 
 globalvar menu_color_label_header
 globalvar menu_color_off_index
@@ -253,7 +256,8 @@ globalvar menu_color_on_index
 globalvar menu_colors_custom
 
 globalvar reload_menus
-
+playervar submenu_curr_start
+playervar menu_wait_index
 
 subroutine menu_up_check
 subroutine menu_down_check
@@ -282,7 +286,28 @@ subroutine new_menu_item_2var
 subroutine new_menu_item_3var
 subroutine new_menu_item_4var
 
+subroutine act_main_sel_lang
+subroutine act_main_open_hero_sel
+subroutine act_main_player_start
+subroutine act_main_host_sel_sce
+subroutine act_main_host_sel_type
+subroutine act_main_host_start
+
 enum MENU_TYPE:
     NONE = 0,
     HOST,
     PLAYER
+
+
+
+playervar action_var
+playervar action_var_2
+playervar action_var_3
+playervar action_result
+playervar general_small
+playervar general_large
+playervar general_range_min
+playervar general_range_max
+
+subroutine act_general_change_list
+subroutine act_general_change_list_var_1
