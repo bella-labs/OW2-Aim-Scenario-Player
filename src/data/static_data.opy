@@ -231,17 +231,28 @@ rule "Load Language Data":
 
     strings_player_menu =   [
         [
-            "",
+            "————————————————\nFor Help Visit:\nASP.bellalabs.dev\n————————————————\n",
+            "Scenario",
+            "Start Scenario",
             "Player",
             "Change Hero",
-            "Scenario",
-            "Start Scenario"
+            "Language"
         ],
         [
-
+            "————————————————\nTest0\nASP.bellalabs.dev\n————————————————\n",
+            "Test1",
+            "Test2",
+            "Test3",
+            "Test4",
+            "언어"
         ],
         [
-            
+            "————————————————\nx0\nASP.bellalabs.dev\n————————————————\n",
+            "x1",
+            "x3",
+            "x4",
+            "x5",
+            "语言"
         ]
     ]
 
@@ -282,14 +293,31 @@ rule "Load Language Data":
             ""
         ]
     ]
-    strings_misc = [
+
+    strings_hud = [
         [
-            "Score",
+            "By: ",
+            "Team Score",
+            "Player Score",
             "High Score",
+            "Previous Scores"
+
+        ]
+    ]
+
+    strings_msg = [
+        [
             "No Scenario Data Loaded",
-            "Wants to Start the Scenario",
-            "Previous Scores",
-            "By: "
+            "Wants to Start the Scenario"
+
+        ]
+    ]
+
+    strings_units = [
+        [
+            "Points",
+            "Seconds"
+
         ]
     ]
     

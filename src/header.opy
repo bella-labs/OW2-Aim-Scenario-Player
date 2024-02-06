@@ -33,7 +33,9 @@ globalvar strings_host_menu
 globalvar strings_host_alt
 globalvar strings_player_menu
 globalvar strings_player_alt
-globalvar strings_misc
+globalvar strings_hud
+globalvar strings_msg
+globalvar strings_units
 globalvar strings_options
 globalvar strings_tags
 
@@ -354,6 +356,10 @@ enum SCENARIO_DATA:
     MVMT_FB_IDLE_MAX
 
 
+enum GAME_TYPES:
+    CHALLENGE = 0,
+    FREEPLAY,
+    VERSUS
 
 playervar owner_player
 playervar target_mvmt_dir
@@ -380,3 +386,7 @@ playervar update_index
 playervar scenario_timer
 playervar strafe_timer
 playervar player_score
+
+globalvar team_score
+
+subroutine teleport_all_players

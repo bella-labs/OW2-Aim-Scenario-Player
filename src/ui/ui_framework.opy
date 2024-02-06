@@ -316,7 +316,7 @@ def increment_for_submenu_item():
 def new_menu_label_header():
     @Name "SUB: new_menu_label_header"
 
-    hudHeader([i for i in localPlayer if eventPlayer.menu_visible
+    hudHeader([i for i in eventPlayer if eventPlayer.menu_visible
         and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size)
         and eventPlayer.menu_label_hidden[evalOnce(eventPlayer.menu_label_size)] != true], 
     "{0}".format(eventPlayer.menu_label[evalOnce(eventPlayer.menu_label_size)]),
@@ -331,7 +331,7 @@ def new_menu_label_header():
 def new_menu_label_subheader():
     @Name "SUB: new_menu_label_subheader"
 
-    hudSubheader([i for i in localPlayer if eventPlayer.menu_visible
+    hudSubheader([i for i in eventPlayer if eventPlayer.menu_visible
         and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size)
         and eventPlayer.menu_label_hidden[evalOnce(eventPlayer.menu_label_size)] != true], 
     "{0}".format(eventPlayer.menu_label[evalOnce(eventPlayer.menu_label_size)]),
@@ -346,7 +346,7 @@ def new_menu_label_subheader():
 def new_menu_label_subtext():
     @Name "SUB: new_menu_label_subtext"
 
-    hudSubtext([i for i in localPlayer if eventPlayer.menu_visible
+    hudSubtext([i for i in eventPlayer if eventPlayer.menu_visible
         and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size)
         and eventPlayer.menu_label_hidden[evalOnce(eventPlayer.menu_label_size)] != true], 
     "{0}".format(eventPlayer.menu_label[evalOnce(eventPlayer.menu_label_size)]),
@@ -362,7 +362,7 @@ def new_menu_item_selection():
     @Name "SUB: new_menu_item_selection"
 
     hudSubheader(
-    localPlayer if eventPlayer.menu_visible and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size) and eventPlayer.menu_item_hidden[evalOnce(eventPlayer.menu_item_size)] != true else [],
+    eventPlayer if eventPlayer.menu_visible and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size) and eventPlayer.menu_item_hidden[evalOnce(eventPlayer.menu_item_size)] != true else [],
     "{0}".format(eventPlayer.menu_item_title_off[evalOnce(eventPlayer.menu_item_size)]) if eventPlayer.menu_index != evalOnce(eventPlayer.menu_item_size) else "■  {0}".format(eventPlayer.menu_item_title_on[evalOnce(eventPlayer.menu_item_size)]), 
     HudPosition.TOP, 
     evalOnce(eventPlayer.menu_max_pos),
@@ -375,7 +375,7 @@ def new_menu_item_selection():
 def new_menu_item_toggle():
     @Name "SUB: new_menu_item_toggle"
 
-    hudSubheader(localPlayer if eventPlayer.menu_visible and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size) and eventPlayer.menu_item_hidden[evalOnce(eventPlayer.menu_item_size)] != true else [],
+    hudSubheader(eventPlayer if eventPlayer.menu_visible and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size) and eventPlayer.menu_item_hidden[evalOnce(eventPlayer.menu_item_size)] != true else [],
     "{0}".format(eventPlayer.menu_item_title_off[evalOnce(eventPlayer.menu_item_size)]) if eventPlayer.menu_index != evalOnce(eventPlayer.menu_item_size) else "■  {0}: {1}".format(eventPlayer.menu_item_title_on[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_1[evalOnce(eventPlayer.menu_item_size)]), 
     HudPosition.TOP, 
     evalOnce(eventPlayer.menu_max_pos), 
@@ -388,7 +388,7 @@ def new_menu_item_toggle():
 def new_menu_item_cycle():
     @Name "SUB: new_menu_item_cycle"
 
-    hudSubheader(localPlayer if eventPlayer.menu_visible and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size) and eventPlayer.menu_item_hidden[evalOnce(eventPlayer.menu_item_size)] != true else [],
+    hudSubheader(eventPlayer if eventPlayer.menu_visible and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size) and eventPlayer.menu_item_hidden[evalOnce(eventPlayer.menu_item_size)] != true else [],
     "{0}".format(eventPlayer.menu_item_title_off[evalOnce(eventPlayer.menu_item_size)]) if eventPlayer.menu_index != evalOnce(eventPlayer.menu_item_size) 
     else "■ {0} ←  {1}  → ".format(eventPlayer.menu_item_title_on[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_1[evalOnce(eventPlayer.menu_item_size)]), 
     HudPosition.TOP, 
@@ -402,7 +402,7 @@ def new_menu_item_cycle():
 def new_menu_item_percentage():
     @Name "SUB: new_menu_item_percentage"
 
-    hudSubheader(localPlayer if eventPlayer.menu_visible and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size) and eventPlayer.menu_item_hidden[evalOnce(eventPlayer.menu_item_size)] != true else [],
+    hudSubheader(eventPlayer if eventPlayer.menu_visible and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size) and eventPlayer.menu_item_hidden[evalOnce(eventPlayer.menu_item_size)] != true else [],
     "{0}".format(eventPlayer.menu_item_title_off[evalOnce(eventPlayer.menu_item_size)]) if eventPlayer.menu_index != evalOnce(eventPlayer.menu_item_size) 
     else "■ {0} ←  {1}%  → ".format(eventPlayer.menu_item_title_on[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_1[evalOnce(eventPlayer.menu_item_size)]), 
     HudPosition.TOP, 
@@ -416,7 +416,7 @@ def new_menu_item_percentage():
 def new_menu_item_toggle_list():
     @Name "SUB: new_menu_item_toggle_list"
 
-    hudSubheader(localPlayer if eventPlayer.menu_visible and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size) and eventPlayer.menu_item_hidden[evalOnce(eventPlayer.menu_item_size)] != true else [],
+    hudSubheader(eventPlayer if eventPlayer.menu_visible and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size) and eventPlayer.menu_item_hidden[evalOnce(eventPlayer.menu_item_size)] != true else [],
     "{0}".format(eventPlayer.menu_item_title_off[evalOnce(eventPlayer.menu_item_size)]) if eventPlayer.menu_index != evalOnce(eventPlayer.menu_item_size) 
     else "■ {0}    ←  {1}  →    {2}    ".format(eventPlayer.menu_item_title_on[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_1[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_1[evalOnce(eventPlayer.menu_item_size)]), 
     HudPosition.TOP, 
@@ -432,7 +432,7 @@ def new_menu_item_2var():
 
     eventPlayer.subitem_size[eventPlayer.menu_item_size] = 1
 
-    hudSubheader(localPlayer if eventPlayer.menu_visible and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size) and eventPlayer.menu_item_hidden[evalOnce(eventPlayer.menu_item_size)] != true else [],
+    hudSubheader(eventPlayer if eventPlayer.menu_visible and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size) and eventPlayer.menu_item_hidden[evalOnce(eventPlayer.menu_item_size)] != true else [],
     "{0}".format(eventPlayer.menu_item_title_off[evalOnce(eventPlayer.menu_item_size)]) if eventPlayer.menu_index != evalOnce(eventPlayer.menu_item_size) 
     else "■ {0}    ←  {1}{2}  →    {3}{4}    ".format(eventPlayer.menu_item_title_on[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][0], eventPlayer.menu_item_var_1[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][1], eventPlayer.menu_item_var_2[evalOnce(eventPlayer.menu_item_size)])  if eventPlayer.subitem_index[evalOnce(eventPlayer.menu_item_size)] == 0
     else "■ {0}    {1}{2}  ←    {3}{4}  →    ".format(eventPlayer.menu_item_title_on[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][0], eventPlayer.menu_item_var_1[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][1], eventPlayer.menu_item_var_2[evalOnce(eventPlayer.menu_item_size)]),
@@ -449,7 +449,7 @@ def new_menu_item_3var():
 
     eventPlayer.subitem_size[eventPlayer.menu_item_size] = 2
 
-    hudSubheader(localPlayer if eventPlayer.menu_visible and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size) and eventPlayer.menu_item_hidden[evalOnce(eventPlayer.menu_item_size)] != true else [],
+    hudSubheader(eventPlayer if eventPlayer.menu_visible and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size) and eventPlayer.menu_item_hidden[evalOnce(eventPlayer.menu_item_size)] != true else [],
     "{0}".format(eventPlayer.menu_item_title_off[evalOnce(eventPlayer.menu_item_size)]) if eventPlayer.menu_index != evalOnce(eventPlayer.menu_item_size) 
     else "■ {0}    ←  {1}{2}  →    {3}{4}    {5}{6}    ".format(eventPlayer.menu_item_title_on[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][0], eventPlayer.menu_item_var_1[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][1], eventPlayer.menu_item_var_2[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][2], eventPlayer.menu_item_var_3[evalOnce(eventPlayer.menu_item_size)])  if eventPlayer.subitem_index[evalOnce(eventPlayer.menu_item_size)] == 0
     else "■ {0}    {1}{2}    ←  {3}{4}  →    {5}{6}    ".format(eventPlayer.menu_item_title_on[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][0], eventPlayer.menu_item_var_1[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][1], eventPlayer.menu_item_var_2[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][2], eventPlayer.menu_item_var_3[evalOnce(eventPlayer.menu_item_size)])  if eventPlayer.subitem_index[evalOnce(eventPlayer.menu_item_size)] == 1
@@ -467,7 +467,7 @@ def new_menu_item_4var():
 
     eventPlayer.subitem_size[eventPlayer.menu_item_size] = 3
 
-    hudSubheader(localPlayer if eventPlayer.menu_visible and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size) and eventPlayer.menu_item_hidden[evalOnce(eventPlayer.menu_item_size)] != true else [],
+    hudSubheader(eventPlayer if eventPlayer.menu_visible and eventPlayer.submenu_index == evalOnce(eventPlayer.submenu_size) and eventPlayer.menu_item_hidden[evalOnce(eventPlayer.menu_item_size)] != true else [],
     "{0}".format(eventPlayer.menu_item_title_off[evalOnce(eventPlayer.menu_item_size)]) if eventPlayer.menu_index != evalOnce(eventPlayer.menu_item_size) 
     else "■ {0}     ←  {1}{2}  →    {3}{4}    {5}{6}    {7}{8}    ".format(eventPlayer.menu_item_title_on[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][0], eventPlayer.menu_item_var_1[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][1], eventPlayer.menu_item_var_2[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][2], eventPlayer.menu_item_var_3[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][3], eventPlayer.menu_item_var_4[evalOnce(eventPlayer.menu_item_size)])  if eventPlayer.subitem_index[evalOnce(eventPlayer.menu_item_size)] == 0
     else "■ {0}     {1}{2}    ←  {3}{4}  →    {5}{6}    {7}{8}    ".format(eventPlayer.menu_item_title_on[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][0], eventPlayer.menu_item_var_1[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][1], eventPlayer.menu_item_var_2[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][2], eventPlayer.menu_item_var_3[evalOnce(eventPlayer.menu_item_size)], eventPlayer.menu_item_var_tags[evalOnce(eventPlayer.menu_item_size)][3], eventPlayer.menu_item_var_4[evalOnce(eventPlayer.menu_item_size)])  if eventPlayer.subitem_index[evalOnce(eventPlayer.menu_item_size)] == 1

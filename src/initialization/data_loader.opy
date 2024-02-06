@@ -30,5 +30,5 @@ def display_missing_data_msg():
     @Name "SUB: display_missing_data_msg"
 
     increment_for_menu_label()
-    eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_misc[eventPlayer.lang_type][2]
+    eventPlayer.menu_label[0] = strings_msg[eventPlayer.lang_type][1]
     new_menu_label_subheader()

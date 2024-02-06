@@ -1,7 +1,7 @@
 rule "Set Player Scenario Status to Global Scenario Status":
     @Event eachPlayer
     @Team 1
-    @Condition game_type != 2
+    @Condition game_type != GAME_TYPES.VERSUS
     @Condition scenario_status != eventPlayer.player_scenario_status
 
     eventPlayer.player_scenario_status = scenario_status
@@ -17,7 +17,6 @@ def start_scenario():
 def stop_scenario():
     @Name "SUB: stop_scenario"
 
-    scenario_status = false
     if not eventPlayer.menu_visible:
         eventPlayer.setMoveSpeed(100)
         eventPlayer.setGravity(100)
@@ -38,7 +37,7 @@ def setup_all_players():
 
     disable_player_input()
 
-    getPlayers(Team.1).teleport(scenario[SCENARIO_DATA.SCE_PLAYER_SPAWN])
+    teleport_all_players()
     getPlayers(Team.1).setFacing(scenario[SCENARIO_DATA.SCE_PLAYER_FACING], Relativity.TO_WORLD)
     getPlayers(Team.1).setGravity(scenario[SCENARIO_DATA.SCE_PLAYER_GRAVITY])
 
@@ -62,8 +61,6 @@ def setup_all_players():
     else:
         getPlayers(Team.1).scenario_timer = 0
         chase(getPlayers(Team.1).scenario_timer, 9999, rate=1, ChaseReeval.DESTINATION_AND_RATE)
-    
-    scenario_status = true
 
 
 def setup_player():
@@ -95,11 +92,14 @@ def setup_player():
     else:
         eventPlayer.scenario_timer = 0
         chase(eventPlayer.scenario_timer, 9999, rate=1, ChaseReeval.DESTINATION_AND_RATE)
-    
-    scenario_status = true
 
 
 def reset_scenario():
     @Name "SUB: reset_scenario"
 
     
+def teleport_all_players():
+    @Name "SUB: teleport_all_players"
+
+    if getNumberOfPlayers(Team.1) > 1:
+        

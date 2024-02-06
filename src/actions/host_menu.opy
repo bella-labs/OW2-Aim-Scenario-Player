@@ -26,16 +26,20 @@ def act_main_host_start():
     @Name "SUB: act_main_host_start"
 
     if eventPlayer.player_scenario_status:
-        if game_type != 2:
+        if game_type != GAME_TYPES.VERSUS:
+            scenario_status = false
             stop_scenario()
         else:
+            eventPlayer.player_scenario_status = false
             stop_player_scenario()
         eventPlayer.menu_item_title_off[0] = strings_host_menu[eventPlayer.lang_type][2]
     else:
         
-        if game_type != 2:
+        if game_type != GAME_TYPES.VERSUS:
+            scenario_status = true
             start_scenario()
         else:
+            eventPlayer.player_scenario_status = false
             start_player_scenario()
         eventPlayer.menu_item_title_off[0] = strings_host_alt[eventPlayer.lang_type][0]
             

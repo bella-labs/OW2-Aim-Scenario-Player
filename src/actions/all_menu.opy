@@ -21,8 +21,8 @@ def act_main_open_hero_sel():
 def act_main_player_start():
     @Name "SUB: act_main_player_start"
 
-    if game_type != 2:
-        smallMessage(hostPlayer, "    {0} {1}".format(eventPlayer, strings_misc[hostPlayer.lang_type][3]))
+    if game_type != GAME_TYPES.VERSUS:
+        smallMessage(hostPlayer, "    {0} {1}".format(eventPlayer, strings_msg[hostPlayer.lang_type][1]))
     else:
         start_player_scenario()
     
