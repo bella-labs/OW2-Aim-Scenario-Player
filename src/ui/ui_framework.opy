@@ -20,7 +20,7 @@ rule "Menu Initialization: Set Static Global Variables":
 rule "Menu Input Listener: Toggle Menu":
     @Event eachPlayer
     @Team 1
-    @Condition eventPlayer.menu_loaded != 0
+    @Condition eventPlayer.menu_type != 0
     @Condition (user_controls[0] <= INPUT_OPTIONS.VECT_RIGHT and eventPlayer.getThrottle() == ui_inputs[0]) or (user_controls[0] > INPUT_OPTIONS.VECT_RIGHT and eventPlayer.isHoldingButton(ui_inputs[0]))
 
     wait(ui_delay, Wait.ABORT_WHEN_FALSE)

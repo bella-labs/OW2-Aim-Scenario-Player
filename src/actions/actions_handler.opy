@@ -9,7 +9,7 @@ def perform_action():
 
     switch eventPlayer.submenu_index:
         case SUBMENUS.SUBMENU_MAIN:
-            if eventPlayer.menu_loaded == MENU_TYPE.HOST:
+            if eventPlayer.menu_type == MENU_TYPE.HOST:
                 menu_act_host_main()
             else:
                 menu_act_player_main()

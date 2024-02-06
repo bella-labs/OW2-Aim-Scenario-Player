@@ -8,7 +8,7 @@ subroutine set_item_data
 rule "Menu Setup: Create Host Menu":
     @Event eachPlayer
     @Condition eventPlayer == hostPlayer
-    @Condition eventPlayer.menu_loaded == MENU_TYPE.NONE
+    @Condition eventPlayer.menu_type == MENU_TYPE.NONE
     @Condition data_loaded[DATA_TYPE.STATIC]
 
     create_stats_hud()
@@ -18,14 +18,14 @@ rule "Menu Setup: Create Host Menu":
 
     create_host_menu()
 
-    eventPlayer.menu_loaded = MENU_TYPE.HOST
+    eventPlayer.menu_type = MENU_TYPE.HOST
     eventPlayer.menu_visible = false
 
 
 rule "Menu Setup: Create Non-Host Menu":
     @Event eachPlayer
     @Condition eventPlayer != hostPlayer
-    @Condition eventPlayer.menu_loaded == MENU_TYPE.NONE
+    @Condition eventPlayer.menu_type == MENU_TYPE.NONE
     @Condition data_loaded[DATA_TYPE.STATIC] 
 
     create_stats_hud()
@@ -35,14 +35,14 @@ rule "Menu Setup: Create Non-Host Menu":
 
     create_player_menu()
 
-    eventPlayer.menu_loaded = MENU_TYPE.HOST
+    eventPlayer.menu_type = MENU_TYPE.HOST
     eventPlayer.menu_visible = false
 
 
 rule "Menu Setup: Manage Player -> Host Change":
     @Event eachPlayer
     @Condition eventPlayer == hostPlayer
-    @Condition eventPlayer.menu_loaded == MENU_TYPE.PLAYER
+    @Condition eventPlayer.menu_type == MENU_TYPE.PLAYER
     @Condition data_loaded[DATA_TYPE.STATIC] 
 
     destroy_menu()
@@ -51,15 +51,14 @@ rule "Menu Setup: Manage Player -> Host Change":
 
     create_host_menu()
 
-    eventPlayer.menu_loaded = MENU_TYPE.HOST
+    eventPlayer.menu_type = MENU_TYPE.HOST
     eventPlayer.menu_visible = false
-
 
 
 rule "Menu Setup: Manage Host -> Player Change":
     @Event eachPlayer
     @Condition eventPlayer != hostPlayer
-    @Condition eventPlayer.menu_loaded == MENU_TYPE.HOST
+    @Condition eventPlayer.menu_type == MENU_TYPE.HOST
     @Condition data_loaded[DATA_TYPE.STATIC] 
 
     destroy_menu()
@@ -68,10 +67,10 @@ rule "Menu Setup: Manage Host -> Player Change":
 
     create_player_menu()
 
-    eventPlayer.menu_loaded = MENU_TYPE.PLAYER
+    eventPlayer.menu_type = MENU_TYPE.PLAYER
     eventPlayer.menu_visible = false
 
-    
+
 def create_stats_hud():
     @Name "SUB: create_stats_hud"
 
@@ -138,6 +137,17 @@ def create_host_menu():
     eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_host_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     new_menu_label_subtext()
 
+    # (Selection) Select Language
+    increment_for_menu_item()
+    eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_host_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
+    eventPlayer.menu_item_title_on[eventPlayer.menu_item_size] = eventPlayer.menu_item_title_off[eventPlayer.menu_item_size]
+    eventPlayer.menu_item_var_1[eventPlayer.menu_item_size] = strings_options[eventPlayer.lang_type][OPTIONS_TYPE.LANG][eventPlayer.lang_type]
+    eventPlayer.action_var = ITEM_TYPE.NONE
+    eventPlayer.action_var_2 = eventPlayer.menu_item_size
+    set_item_data()
+
+    new_menu_item_cycle()
+
     # (Selection) Change Hero
     increment_for_menu_item()
     eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_host_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
@@ -153,7 +163,10 @@ def create_host_menu():
     increment_for_menu_item()
     eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_host_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     eventPlayer.menu_item_title_on[eventPlayer.menu_item_size] = eventPlayer.menu_item_title_off[eventPlayer.menu_item_size]
-    new_menu_item_selection()
+    eventPlayer.menu_item_var_1[eventPlayer.menu_item_size] = scenario_names[0]
+
+    new_menu_item_cycle()
+    
     if len(scenarios) <= 1:
         eventPlayer.menu_item_hidden[eventPlayer.menu_item_size] = true
 
@@ -168,7 +181,7 @@ def create_host_menu():
     eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_host_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     eventPlayer.menu_item_title_on[eventPlayer.menu_item_size] = eventPlayer.menu_item_title_off[eventPlayer.menu_item_size]
     new_menu_item_selection()
- 
+
 
 def create_player_menu():
     @Name "SUB: create_player_menu"
@@ -182,6 +195,16 @@ def create_player_menu():
     increment_for_menu_label()
     eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_player_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     new_menu_label_subtext()
+
+    # (Selection) Select Language
+    increment_for_menu_item()
+    eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_host_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
+    eventPlayer.menu_item_title_on[eventPlayer.menu_item_size] = eventPlayer.menu_item_title_off[eventPlayer.menu_item_size]
+
+    eventPlayer.menu_item_var_1[eventPlayer.menu_item_size] = strings_options[eventPlayer.lang_type][OPTIONS_TYPE.LANG][eventPlayer.lang_type]
+    set_item_data()
+
+    new_menu_item_cycle()
 
     # (Selection) Change Hero
     increment_for_menu_item()
@@ -209,3 +232,48 @@ def set_item_data():
     eventPlayer.menu_item_small_step[eventPlayer.action_var_2] = item_data[eventPlayer.action_var][2]
     eventPlayer.menu_item_large_step[eventPlayer.action_var_2] = item_data[eventPlayer.action_var][3]
     eventPlayer.menu_item_help[eventPlayer.action_var_2] = help_data[item_data[eventPlayer.action_var][4]]
+
+
+def update_language():
+    @Name "SUB: update_language"
+    if eventPlayer.menu_type == MENU_TYPE.HOST:
+        # (Subtext) ???
+        eventPlayer.menu_label[0] = strings_host_menu[eventPlayer.lang_type][0]
+        # (Header) Player
+        eventPlayer.menu_label[1] = strings_host_menu[eventPlayer.lang_type][1]
+        # (Selection) Select Language
+        eventPlayer.menu_item_title_off[0] = strings_host_menu[eventPlayer.lang_type][2]
+        eventPlayer.menu_item_title_on[0] = eventPlayer.menu_item_title_off[0]
+        eventPlayer.menu_item_var_1[0] = strings_options[eventPlayer.lang_type][OPTIONS_TYPE.LANG][eventPlayer.lang_type]
+        # (Selection) Change Hero
+        eventPlayer.menu_item_title_off[1] = strings_host_menu[eventPlayer.lang_type][3]
+        eventPlayer.menu_item_title_on[1] = eventPlayer.menu_item_title_off[1]
+        # (Header) Scenario
+        eventPlayer.menu_label[2] = strings_host_menu[eventPlayer.lang_type][4]
+        # (Selection) Select Scenario
+        eventPlayer.menu_item_title_off[2] = strings_host_menu[eventPlayer.lang_type][5]
+        eventPlayer.menu_item_title_on[2] = eventPlayer.menu_item_title_off[2]
+        # (Selection) Scenario Type
+        eventPlayer.menu_item_title_off[3] = strings_host_menu[eventPlayer.lang_type][6]
+        eventPlayer.menu_item_title_on[3] = eventPlayer.menu_item_title_off[3]
+        ##eventPlayer.menu_item_var_1[eventPlayer.menu_item_size] = scenario_names[0]
+        # (Selection) Start Scenario
+        eventPlayer.menu_item_title_off[4] = strings_host_menu[eventPlayer.lang_type][7]
+        eventPlayer.menu_item_title_on[4] = eventPlayer.menu_item_title_off[4]
+    else:
+        # (Subtext) ???
+        eventPlayer.menu_label[0] = strings_player_menu[eventPlayer.lang_type][0]
+        # (Header) Player
+        eventPlayer.menu_label[1] = strings_player_menu[eventPlayer.lang_type][1]
+        # (Selection) Select Language
+        eventPlayer.menu_item_title_off[0] = strings_host_menu[eventPlayer.lang_type][2]
+        eventPlayer.menu_item_title_on[0] = eventPlayer.menu_item_title_off[0]
+        eventPlayer.menu_item_var_1[0] = strings_options[eventPlayer.lang_type][OPTIONS_TYPE.LANG][eventPlayer.lang_type]
+        # (Selection) Change Hero
+        eventPlayer.menu_item_title_off[1] = strings_player_menu[eventPlayer.lang_type][2]
+        eventPlayer.menu_item_title_on[1] = eventPlayer.menu_item_title_off[1]
+        # (Header) Scenario
+        eventPlayer.menu_label[2] = strings_player_menu[eventPlayer.lang_type][3]
+        # (Selection) Start Scenario
+        eventPlayer.menu_item_title_off[2] = strings_player_menu[eventPlayer.lang_type][4]
+        eventPlayer.menu_item_title_on[2] = eventPlayer.menu_item_title_off[2]

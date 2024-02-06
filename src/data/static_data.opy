@@ -187,6 +187,7 @@ rule "Load Language Data":
         [
             "",
             "Player",
+            "Language",
             "Change Hero",
             "Scenario",
             "Select Scenario",
@@ -194,10 +195,24 @@ rule "Load Language Data":
             "Start Scenario"
         ],
         [
-
+            "",
+            "Test1",
+            "언어",
+            "Test3",
+            "Test4",
+            "Test5",
+            "Test6",
+            "Test7"
         ],
         [
-
+            "",
+            "x1",
+            "语言",
+            "x3",
+            "x4",
+            "x5",
+            "x6",
+            "x7"
         ]
 
     ]
@@ -270,7 +285,8 @@ rule "Load Language Data":
     strings_misc = [
         [
             "Current Score: ",
-            "Highest Score: "
+            "Highest Score: ",
+            "No Scenario Data Loaded"
         ]
     ]
     

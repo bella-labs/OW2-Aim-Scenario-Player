@@ -42,13 +42,10 @@ playervar scenario_authors
 playervar export_data
 
 subroutine set_scenario
-subroutine load_missing_data_message
+subroutine display_missing_data_msg
 
 enum SUBMENUS:
-    SUBMENU_MAIN = 0,
-    SUBMENU_SCENARIO,
-    SUBMENU_BOT,
-    SUBMENU_PROFILE
+    SUBMENU_MAIN = 0
 
 enum INPUT_OPTIONS:
     VECT_FORWARD = 0,
@@ -78,49 +75,13 @@ enum MENU_ACTIONS:
     MENU_SET_VECTOR
 
 enum RANGE_TYPE:
-    NONE = 0,
-    SLOT,
-    HERO,
-    PERCENT,
-    ANGLE,
-    TIME,
-    SCALAR,
-    VECTOR,
-    POINTS,
+    NONE = 0
 
 enum HELP_TYPE:
-    DEFAULT = 0,
-    CYCLE,
-    CYCLE_TOGGLE,
-    CYCLE_OVERRIDE,
-    SUBITEM_CYCLE,
-    SUBITEM_TOGGLE,
-    SUBITEM_VECT,
-    SUBITEM_VECT_OPT
+    DEFAULT = 0
 
 enum ITEM_TYPE:
-    NONE = 0,
-    SLOT,
-    TOGGLE_SLOT,
-    OVERRIDE_SLOT,
-    VECTOR,
-    SCALAR,
-    SCORE_TIME,
-    SCORE_POINTS,
-    POINTS,
-    STRAFE,
-    TYPE_VECT,
-    BOUNDARY,
-    DISTANCE,
-    HERO,
-    HEALTH,
-    SPEED,
-    SCALE,
-    PROF_STATUS,
-    ORDER,
-    MVMT_TYPE,
-    MVMT_DIR,
-    CHANCE
+    NONE = 0
 
 
 enum SMALL_TYPE:
@@ -166,19 +127,8 @@ enum TAG_TYPE:
     
 
 enum OPTIONS_TYPE:
-    TOGGLE = 0,
-    GAME_TYPE,
-    TARGET,
-    SPAWN,
-    FACING,
-    BOUNDS,
-    PROFILE,
-    MVMT_TYPE,
-    SCE_MODE,
-    SCE_ORDER
-
-enum PLAYER_INDEXES:
-    PROFILE = 0
+    LANG = 0,
+    MODE
 
 enum PLAYER_RAND:
     XZ = 0,
@@ -247,7 +197,7 @@ playervar menu_item_range
 
 subroutine log_run
 
-playervar menu_loaded
+playervar menu_type
 playervar lang_type
 
 globalvar menu_color_label_header
@@ -311,3 +261,15 @@ playervar general_range_max
 
 subroutine act_general_change_list
 subroutine act_general_change_list_var_1
+
+globalvar game_type
+globalvar scenario_status
+playervar player_scenario_status
+
+subroutine start_scenario
+subroutine stop_scenario
+subroutine start_player_scenario
+subroutine stop_player_scenario
+
+
+playervar lang_index

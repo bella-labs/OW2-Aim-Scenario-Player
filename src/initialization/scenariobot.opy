@@ -22,12 +22,15 @@ rule "Load Scenario Data":
         scenario_index = 0
         scenario = scenarios[scenario_index]
     else:
-        load_missing_data_message()
+        display_missing_data_msg()
 
     destroyDummy(eventPlayer.getTeam(), eventPlayer.getSlot())
 
 
-def load_missing_data_message():
-    @Name "SUB: load_missing_data_message"
+def display_missing_data_msg():
+    @Name "SUB: display_missing_data_msg"
 
+    increment_for_menu_label()
+    eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_misc[eventPlayer.lang_type][2]
+    new_menu_label_subheader()
     
