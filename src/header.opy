@@ -375,3 +375,8 @@ playervar score
 playervar high_score
 
 subroutine set_item_data
+playervar update_index
+
+playervar scenario_timer
+playervar strafe_timer
+playervar player_score

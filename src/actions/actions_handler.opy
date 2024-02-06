@@ -26,20 +26,22 @@ def menu_act_host_main():
 
     switch eventPlayer.menu_index:
         case eventPlayer.submenu_curr_start + 0:
-            act_main_sel_lang()
-            break
-        case eventPlayer.submenu_curr_start + 1:
-            act_main_open_hero_sel()
-            break
-        case eventPlayer.submenu_curr_start + 2:
-            act_main_host_sel_sce()
-            break
-        case eventPlayer.submenu_curr_start + 3:
-            act_main_host_sel_type()
-            break
-        case eventPlayer.submenu_curr_start + 4:
             act_main_host_start()
             break
+        case eventPlayer.submenu_curr_start + 1:
+            act_main_host_sel_sce()
+            break
+        case eventPlayer.submenu_curr_start + 2:
+            act_main_host_sel_type()
+            break
+        case eventPlayer.submenu_curr_start + 3:
+            act_main_open_hero_sel()
+            break
+        case eventPlayer.submenu_curr_start + 4:
+            act_main_sel_lang()
+            break
+
+
 
 
 def menu_act_player_main():
@@ -47,13 +49,13 @@ def menu_act_player_main():
     
     switch eventPlayer.menu_index:
         case eventPlayer.submenu_curr_start + 0:
-            act_main_sel_lang()
+            act_main_player_start()
             break
         case eventPlayer.submenu_curr_start + 1:
             act_main_open_hero_sel()
             break
         case eventPlayer.submenu_curr_start + 2:
-            act_main_player_start()
+            act_main_sel_lang()
             break
 
 

@@ -54,6 +54,15 @@ def setup_all_players():
 
     bigMessage(getPlayers(Team.1), "Start")
 
+    smallMessage(hostPlayer, scenario[SCENARIO_DATA.SCE_GAME_MODE])
+    if scenario[SCENARIO_DATA.SCE_GAME_MODE] == 0:
+        smallMessage(hostPlayer, scenario[SCENARIO_DATA.SCE_GAME_LIMIT])
+        getPlayers(Team.1).scenario_timer = scenario[SCENARIO_DATA.SCE_GAME_LIMIT]
+        chase(getPlayers(Team.1).scenario_timer, 0, rate=1, ChaseReeval.DESTINATION_AND_RATE)
+    else:
+        getPlayers(Team.1).scenario_timer = 0
+        chase(getPlayers(Team.1).scenario_timer, 9999, rate=1, ChaseReeval.DESTINATION_AND_RATE)
+    
     scenario_status = true
 
 
@@ -78,6 +87,15 @@ def setup_player():
 
     bigMessage(eventPlayer, "Start")
 
+    smallMessage(hostPlayer, scenario[SCENARIO_DATA.SCE_GAME_MODE])
+    if scenario[SCENARIO_DATA.SCE_GAME_MODE] == 0:
+        smallMessage(hostPlayer, scenario[SCENARIO_DATA.SCE_GAME_LIMIT])
+        eventPlayer.scenario_timer = scenario[SCENARIO_DATA.SCE_GAME_LIMIT]
+        chase(eventPlayer.scenario_timer, 0, rate=1, ChaseReeval.DESTINATION_AND_RATE)
+    else:
+        eventPlayer.scenario_timer = 0
+        chase(eventPlayer.scenario_timer, 9999, rate=1, ChaseReeval.DESTINATION_AND_RATE)
+    
     scenario_status = true
 
 

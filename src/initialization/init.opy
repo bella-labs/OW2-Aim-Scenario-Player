@@ -3,7 +3,7 @@ rule "Initialize: Setup":
     if match_timer == 0:
         pauseMatchTime()
     # Disable Inspector for performance
-    disableInspector()
+    #disableInspector()
 
 
 rule "Initialize: Workshop Settings":

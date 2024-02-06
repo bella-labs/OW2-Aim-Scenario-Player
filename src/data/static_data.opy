@@ -186,33 +186,33 @@ rule "Load Language Data":
     strings_host_menu = [
         [
             "————————————————\nFor Help Visit:\nASP.bellalabs.dev\n————————————————\n",
-            "Player",
-            "Language",
-            "Change Hero",
             "Scenario",
+            "Start Scenario",
             "Select Scenario",
             "Scenario Type",
-            "Start Scenario"
+            "Player",
+            "Change Hero",
+            "Language"
         ],
         [
-            "",
+            "————————————————\nTest0\nASP.bellalabs.dev\n————————————————\n",
             "Test1",
-            "언어",
+            "Test2",
             "Test3",
             "Test4",
             "Test5",
             "Test6",
-            "Test7"
+            "언어"
         ],
         [
-            "",
+            "————————————————\nx0\nASP.bellalabs.dev\n————————————————\n",
             "x1",
-            "语言",
             "x3",
             "x4",
             "x5",
             "x6",
-            "x7"
+            "x7",
+            "语言"
         ]
 
     ]
@@ -284,8 +284,8 @@ rule "Load Language Data":
     ]
     strings_misc = [
         [
-            "Score: ",
-            "High Score: ",
+            "Score",
+            "High Score",
             "No Scenario Data Loaded",
             "Wants to Start the Scenario",
             "Previous Scores",

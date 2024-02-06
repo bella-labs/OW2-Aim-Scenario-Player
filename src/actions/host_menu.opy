@@ -25,17 +25,21 @@ def act_main_host_sel_type():
 def act_main_host_start():
     @Name "SUB: act_main_host_start"
 
-    if game_type != 2:
-        if scenario_status:
+    if eventPlayer.player_scenario_status:
+        if game_type != 2:
             stop_scenario()
-            eventPlayer.menu_item_title_off[eventPlayer.menu_index] = strings_host_menu[eventPlayer.lang_type][7]
-        else:
-            start_scenario()
-            eventPlayer.menu_item_title_off[eventPlayer.menu_index] = strings_host_alt[eventPlayer.lang_type][0]
-    else:
-        if eventPlayer.player_scenario_status:
-            start_player_scenario()
         else:
             stop_player_scenario()
+        eventPlayer.menu_item_title_off[0] = strings_host_menu[eventPlayer.lang_type][2]
+    else:
+        
+        if game_type != 2:
+            start_scenario()
+        else:
+            start_player_scenario()
+        eventPlayer.menu_item_title_off[0] = strings_host_alt[eventPlayer.lang_type][0]
+            
+    eventPlayer.menu_item_title_on[0] = eventPlayer.menu_item_title_off[0]
+    
 
 
