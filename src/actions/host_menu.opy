@@ -4,6 +4,7 @@ def act_main_host_sel_sce():
     scenario_index += 1
     if scenario_index >= len(scenarios):
         scenario_index = 0
+    scenario = scenarios[scenario_index]
 
 
 def act_main_host_sel_type():
@@ -27,11 +28,14 @@ def act_main_host_start():
     if game_type != 2:
         if scenario_status:
             stop_scenario()
-            scenario_status = false
+            eventPlayer.menu_item_title_off[eventPlayer.menu_index] = strings_host_menu[eventPlayer.lang_type][7]
         else:
             start_scenario()
-            scenario_status = true
+            eventPlayer.menu_item_title_off[eventPlayer.menu_index] = strings_host_alt[eventPlayer.lang_type][0]
     else:
-        start_player_scenario()
+        if eventPlayer.player_scenario_status:
+            start_player_scenario()
+        else:
+            stop_player_scenario()
 
 

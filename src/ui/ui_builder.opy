@@ -1,10 +1,3 @@
-playervar stat_data
-playervar stat_formatter
-playervar score
-playervar high_score
-
-subroutine set_item_data
-
 rule "Menu Setup: Create Host Menu":
     @Event eachPlayer
     @Condition eventPlayer == hostPlayer
@@ -74,32 +67,34 @@ rule "Menu Setup: Manage Host -> Player Change":
 def create_stats_hud():
     @Name "SUB: create_stats_hud"
 
-    hudSubtext(eventPlayer, scenario_names[scenario_index], HudPosition.RIGHT, -9999, Color.WHITE, HudReeval.VISIBILITY_SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
-    hudSubheader(eventPlayer, scenario_authors[scenario_index], HudPosition.RIGHT, -9998, Color.WHITE, HudReeval.VISIBILITY_SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
+    hudSubtext(localPlayer, scenario_names[scenario_index], HudPosition.RIGHT, -9999, Color.WHITE, HudReeval.VISIBILITY_SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
+    hudSubheader(localPlayer, "{0}{1}\n".format(strings_misc[eventPlayer.lang_type][5], scenario_authors[scenario_index]), HudPosition.RIGHT, -9998, Color.WHITE, HudReeval.VISIBILITY_SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
 
     hudSubheader([i for i in localPlayer if localPlayer.menu_visible],
-    "{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}\n{7}\n{8}\n{9}\n{10}\n{11}\n{12}\n{13}\n{14}\n{15}\n{16}\n{17}\n{18}\n{19}".format(
-            "\n---------------------\nPrevious Scores\n---------------------",
-            eventPlayer.stat_data[0] if eventPlayer.stat_data[0] != null else "",
-            eventPlayer.stat_data[1] if eventPlayer.stat_data[1] != null else "",
-            eventPlayer.stat_data[2] if eventPlayer.stat_data[2] != null else "",
-            eventPlayer.stat_data[3] if eventPlayer.stat_data[3] != null else "",
-            eventPlayer.stat_data[4] if eventPlayer.stat_data[4] != null else "",
-            eventPlayer.stat_data[5] if eventPlayer.stat_data[5] != null else "",
-            eventPlayer.stat_data[6] if eventPlayer.stat_data[6] != null else "",
-            eventPlayer.stat_data[7] if eventPlayer.stat_data[7] != null else "",
-            eventPlayer.stat_data[8] if eventPlayer.stat_data[8] != null else "",
-            eventPlayer.stat_data[9] if eventPlayer.stat_data[9] != null else "",
-            eventPlayer.stat_data[10] if eventPlayer.stat_data[10] != null else "",
-            eventPlayer.stat_data[11] if eventPlayer.stat_data[11] != null else "",
-            eventPlayer.stat_data[12] if eventPlayer.stat_data[12] != null else "",
-            eventPlayer.stat_data[13] if eventPlayer.stat_data[13] != null else "",
-            eventPlayer.stat_data[14] if eventPlayer.stat_data[14] != null else "",
-            eventPlayer.stat_data[15] if eventPlayer.stat_data[15] != null else "",
-            eventPlayer.stat_data[16] if eventPlayer.stat_data[16] != null else "",
-            eventPlayer.stat_data[17] if eventPlayer.stat_data[17] != null else "",
-            eventPlayer.stat_data[18] if eventPlayer.stat_data[18] != null else "",
-            eventPlayer.stat_data[19] if eventPlayer.stat_data[19] != null else ""
+    "\n{0}{1}\n\n---------------------\n{2}\n---------------------\n\n{3}\n{4}\n{5}\n{6}\n{7}\n{8}\n{9}\n{10}\n{11}\n{12}\n{13}\n{14}\n{15}\n{16}\n{17}\n{18}\n{19}\n{20}\n{21}".format(
+            strings_misc[eventPlayer.lang_type][1], 
+            localPlayer.high_score,
+            strings_misc[localPlayer.lang_type][4],
+            localPlayer.stat_data[0] if localPlayer.stat_data[0] != null else "",
+            localPlayer.stat_data[1] if localPlayer.stat_data[1] != null else "",
+            localPlayer.stat_data[2] if localPlayer.stat_data[2] != null else "",
+            localPlayer.stat_data[3] if localPlayer.stat_data[3] != null else "",
+            localPlayer.stat_data[4] if localPlayer.stat_data[4] != null else "",
+            localPlayer.stat_data[5] if localPlayer.stat_data[5] != null else "",
+            localPlayer.stat_data[6] if localPlayer.stat_data[6] != null else "",
+            localPlayer.stat_data[7] if localPlayer.stat_data[7] != null else "",
+            localPlayer.stat_data[8] if localPlayer.stat_data[8] != null else "",
+            localPlayer.stat_data[9] if localPlayer.stat_data[9] != null else "",
+            localPlayer.stat_data[10] if localPlayer.stat_data[10] != null else "",
+            localPlayer.stat_data[11] if localPlayer.stat_data[11] != null else "",
+            localPlayer.stat_data[12] if localPlayer.stat_data[12] != null else "",
+            localPlayer.stat_data[13] if localPlayer.stat_data[13] != null else "",
+            localPlayer.stat_data[14] if localPlayer.stat_data[14] != null else "",
+            localPlayer.stat_data[15] if localPlayer.stat_data[15] != null else "",
+            localPlayer.stat_data[16] if localPlayer.stat_data[16] != null else "",
+            localPlayer.stat_data[17] if localPlayer.stat_data[17] != null else "",
+            localPlayer.stat_data[18] if localPlayer.stat_data[18] != null else "",
+            localPlayer.stat_data[19] if localPlayer.stat_data[19] != null else ""
 
     ),
     HudPosition.RIGHT, 
@@ -109,7 +104,7 @@ def create_stats_hud():
     SpecVisibility.ALWAYS)
 
     hudSubheader([i for i in localPlayer],
-    "{0}{1}\n  {2}{3}".format(strings_misc[eventPlayer.lang_type][0], localPlayer.score, strings_misc[eventPlayer.lang_type][1], localPlayer.high_score),
+    "{0}{1}".format(strings_misc[eventPlayer.lang_type][0], localPlayer.score),
     HudPosition.LEFT, 
     9999, 
     Color.WHITE, 
@@ -130,6 +125,7 @@ def create_host_menu():
     # (Subtext) ???
     increment_for_menu_label()
     eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_host_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
+    eventPlayer.menu_label_color = Color.WHITE
     new_menu_label_subheader()
 
     # (Header) Player
@@ -262,7 +258,7 @@ def update_language():
         eventPlayer.menu_item_title_on[4] = eventPlayer.menu_item_title_off[4]
     else:
         # (Subtext) ???
-        eventPlayer.menu_label[0] = strings_player_menu[eventPlayer.lang_type][0]
+        eventPlayer.menu_label[0] = "{0}{1}{2}".format(strings_symbols[0], strings_host_menu[eventPlayer.lang_type][0], strings_symbols[0])
         # (Header) Player
         eventPlayer.menu_label[1] = strings_player_menu[eventPlayer.lang_type][1]
         # (Selection) Select Language
@@ -277,3 +273,5 @@ def update_language():
         # (Selection) Start Scenario
         eventPlayer.menu_item_title_off[2] = strings_player_menu[eventPlayer.lang_type][4]
         eventPlayer.menu_item_title_on[2] = eventPlayer.menu_item_title_off[2]
+    
+    update_help_data()

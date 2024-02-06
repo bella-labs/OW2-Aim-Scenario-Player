@@ -96,8 +96,6 @@ enum LARGE_TYPE:
 
 enum DATA_TYPE:
     STATIC = 0,
-    BOT,
-    MENU,
     CONTROLS
     
 enum GENERAL_TARGET:
@@ -271,5 +269,109 @@ subroutine stop_scenario
 subroutine start_player_scenario
 subroutine stop_player_scenario
 
+subroutine reset_scenario
 
 playervar lang_index
+
+
+enum SCENARIO_DATA:
+    SCE_PLAYER_SPAWN = 0,
+    SCE_PLAYER_FACING,
+    SCE_PLAYER_SPEED,
+    SCE_PLAYER_GRAVITY,
+    SCE_GAME_MODE,
+    SCE_GAME_LIMIT,
+    SCE_SPAWN_ORDER,
+    SCE_RESPAWN_MIN,
+    SCE_RESPAWN_MAX,
+    SCE_BS_POINTS,
+    SCE_HS_POINTS,
+    SCE_ELIM_POINTS,
+    SCE_STRAFE_PPS,
+    SCE_STRAFE_MIN,
+    SCE_STRAFE_MAX,
+    SCE_CUSTOM_STATUS,
+    BOT_SLOT_STATUS,
+    BOT_SPAWN_TYPE,
+    BOT_SPAWN_VECT,
+    BOT_FACING_TYPE,
+    BOT_FACING_VECT,
+    BOT_BOUND_TYPE,
+    BOT_BOUND_POS,
+    BOT_BOUND_ANGLE,
+    BOT_BOUND_DIM,
+    BOT_DIST_MIN,
+    BOT_DIST_MAX,
+    BOT_HERO_POOL,
+    BOT_HEALTH,
+    BOT_HPS,
+    BOT_HPS_WAIT,
+    BOT_SPEED_TYPE,
+    BOT_SPEED_MIN,
+    BOT_SPEED_MAX,
+    BOT_SPEED_TARGET,
+    BOT_SCALE_TYPE,
+    BOT_SCALE_MIN,
+    BOT_SCALE_MAX,
+    BOT_SCALE_TARGET,
+    BOT_GRAVITY,
+    BOT_PROFILE_WEIGHTS,
+    BOT_PROFILE_MAX_WEIGHT,
+    BOT_PROFILE_TYPE,
+    BOT_PROFILE_MIN,
+    BOT_PROFILE_MAX,
+    MVMT_HORI_TYPE,
+    MVMT_HORI_IMPULSE,
+    MVMT_HORI_INTERVAL,
+    MVMT_WEIGHTS,
+    MVMT_MAX_WEIGHT,
+    MVMT_LEFT_MIN,
+    MVMT_LEFT_MAX,
+    MVMT_RIGHT_MIN,
+    MVMT_RIGHT_MAX,
+    MVMT_FWD_MIN,
+    MVMT_FWD_MAX,
+    MVMT_BACK_MIN,
+    MVMT_BACK_MAX,
+    MVMT_VERT_TYPE,
+    MVMT_VERT_IMPULSE,
+    MVMT_VERT_INTERVAL,
+    MVMT_JUMP_CHANCE,
+    MVMT_JUMP_INTERVAL,
+    MVMT_JUMP_MIN,
+    MVMT_JUMP_MAX,
+    MVMT_CROUCH_CHANCE,
+    MVMT_CROUCH_INTERVAL,
+    MVMT_UNCROUCH_MIN,
+    MVMT_UNCROUCH_MAX,
+    MVMT_LR_IDLE_CHANCE,
+    MVMT_LR_IDLE_INTERVAL,
+    MVMT_LR_IDLE_MIN,
+    MVMT_LR_IDLE_MAX,
+    MVMT_FB_IDLE_CHANCE,
+    MVMT_FB_IDLE_INTERVAL,
+    MVMT_FB_IDLE_MIN,
+    MVMT_FB_IDLE_MAX
+
+
+
+playervar owner_player
+playervar target_mvmt_dir
+playervar disabled_hori
+playervar disabled_vert
+playervar disabled_boundary
+
+subroutine setup_all_players
+subroutine setup_player
+
+subroutine menu_act_host_main
+subroutine menu_act_player_main
+
+globalvar match_timer
+
+playervar stat_data
+playervar stat_formatter
+playervar score
+playervar high_score
+
+subroutine set_item_data

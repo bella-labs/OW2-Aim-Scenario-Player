@@ -22,16 +22,7 @@ def act_main_player_start():
     @Name "SUB: act_main_player_start"
 
     if game_type != 2:
-        switch lang_type:
-            case 0:
-                smallMessage(hostPlayer, "    {0} {1}".format(eventPlayer, strings_misc[0][2]))
-                break
-            case 1:
-                smallMessage(hostPlayer, "    {0} {1}".format(eventPlayer, strings_misc[1][2]))
-                break
-            case 2:
-                smallMessage(hostPlayer, "    {0} {1}".format(eventPlayer, strings_misc[2][2]))
-                break
+        smallMessage(hostPlayer, "    {0} {1}".format(eventPlayer, strings_misc[hostPlayer.lang_type][3]))
     else:
         start_player_scenario()
     

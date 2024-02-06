@@ -185,7 +185,7 @@ rule "Load Language Data":
 
     strings_host_menu = [
         [
-            "",
+            "————————————————\nFor Help Visit:\nASP.bellalabs.dev\n————————————————\n",
             "Player",
             "Language",
             "Change Hero",
@@ -284,9 +284,12 @@ rule "Load Language Data":
     ]
     strings_misc = [
         [
-            "Current Score: ",
-            "Highest Score: ",
-            "No Scenario Data Loaded"
+            "Score: ",
+            "High Score: ",
+            "No Scenario Data Loaded",
+            "Wants to Start the Scenario",
+            "Previous Scores",
+            "By: "
         ]
     ]
     

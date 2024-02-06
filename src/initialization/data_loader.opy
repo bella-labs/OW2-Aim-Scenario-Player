@@ -19,7 +19,6 @@ rule "Load Scenario Data":
         scenario_authors = eventPlayer.scenario_authors
     if eventPlayer.export_data != null:
         scenarios = eventPlayer.export_data
-        scenario_index = 0
         scenario = scenarios[scenario_index]
     else:
         display_missing_data_msg()
@@ -33,4 +32,3 @@ def display_missing_data_msg():
     increment_for_menu_label()
     eventPlayer.menu_label[eventPlayer.menu_label_size] = strings_misc[eventPlayer.lang_type][2]
     new_menu_label_subheader()
-    

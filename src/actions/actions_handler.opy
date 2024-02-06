@@ -1,6 +1,3 @@
-subroutine menu_act_host_main
-subroutine menu_act_player_main
-
 def perform_action():
     @Name "SUB: perform_action"
 

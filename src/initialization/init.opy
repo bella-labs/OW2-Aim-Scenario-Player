@@ -1,5 +1,3 @@
-globalvar match_timer
-
 rule "Initialize: Setup":
 
     if match_timer == 0:

@@ -1,9 +1,6 @@
-
-
-
 def act_general_change_list():
     @Name "SUB: act_general_change_list"
-    
+
     eventPlayer.action_result = eventPlayer.action_var
     switch eventPlayer.menu_action:
         case MENU_ACTIONS.MENU_STEP_LEFT:
