@@ -98,7 +98,8 @@ enum LARGE_TYPE:
 
 enum DATA_TYPE:
     STATIC = 0,
-    CONTROLS
+    CONTROLS,
+    SCENARIO
     
 enum GENERAL_TARGET:
     VECT_X = 0,
@@ -277,7 +278,7 @@ subroutine reset_scenario
 playervar lang_index
 
 
-enum SCENARIO_DATA:
+enum SCE_DATA:
     SCE_PLAYER_SPAWN = 0,
     SCE_PLAYER_FACING,
     SCE_PLAYER_SPEED,
@@ -391,4 +392,4 @@ playervar player_score
 globalvar team_score
 
 subroutine teleport_all_players
-globalvar bad_data
+subroutine create_target_bot

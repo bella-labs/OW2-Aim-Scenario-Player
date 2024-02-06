@@ -18,6 +18,7 @@ settings "settings.json"
 #!include "actions/host_menu.opy"
 #!include "actions/all_menu.opy"
 #!include "scenario/scenario_handler.opy"
+#!include "bot/bot_generation.opy"
 
 
 rule "DISPLAY SCENARIO DATA":

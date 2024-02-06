@@ -166,13 +166,13 @@ def create_stats_hud():
     SpecVisibility.ALWAYS)
 
     # Strafe Progress Bar
-    progressBarHud([i for i in localPlayer if localPlayer.player_scenario_status and scenario[SCENARIO_DATA.SCE_STRAFE_PPS] > 0],  
-    (localPlayer.strafe_timer - scenario[SCENARIO_DATA.SCE_STRAFE_MIN]) / (scenario[SCENARIO_DATA.SCE_STRAFE_MAX] - scenario[SCENARIO_DATA.SCE_STRAFE_MIN]) * 100, 
-    "{0} / {1} {2}".format(min(scenario[SCENARIO_DATA.SCE_STRAFE_PPS] * (scenario[SCENARIO_DATA.SCE_STRAFE_MAX] - scenario[SCENARIO_DATA.SCE_STRAFE_MIN]), max(0,(localPlayer.strafe_timer - scenario[SCENARIO_DATA.SCE_STRAFE_MIN]) / (scenario[SCENARIO_DATA.SCE_STRAFE_MAX] - scenario[SCENARIO_DATA.SCE_STRAFE_MIN]) * scenario[SCENARIO_DATA.SCE_STRAFE_PPS] * (scenario[SCENARIO_DATA.SCE_STRAFE_MAX] - scenario[SCENARIO_DATA.SCE_STRAFE_MIN]))), scenario[SCENARIO_DATA.SCE_STRAFE_PPS] * (scenario[SCENARIO_DATA.SCE_STRAFE_MAX] - scenario[SCENARIO_DATA.SCE_STRAFE_MIN]), strings_units[lang_type][0]), 
+    progressBarHud([i for i in localPlayer if localPlayer.player_scenario_status and scenario[SCE_DATA.SCE_STRAFE_PPS] > 0],  
+    (localPlayer.strafe_timer - scenario[SCE_DATA.SCE_STRAFE_MIN]) / (scenario[SCE_DATA.SCE_STRAFE_MAX] - scenario[SCE_DATA.SCE_STRAFE_MIN]) * 100, 
+    "{0} / {1} {2}".format(min(scenario[SCE_DATA.SCE_STRAFE_PPS] * (scenario[SCE_DATA.SCE_STRAFE_MAX] - scenario[SCE_DATA.SCE_STRAFE_MIN]), max(0,(localPlayer.strafe_timer - scenario[SCE_DATA.SCE_STRAFE_MIN]) / (scenario[SCE_DATA.SCE_STRAFE_MAX] - scenario[SCE_DATA.SCE_STRAFE_MIN]) * scenario[SCE_DATA.SCE_STRAFE_PPS] * (scenario[SCE_DATA.SCE_STRAFE_MAX] - scenario[SCE_DATA.SCE_STRAFE_MIN]))), scenario[SCE_DATA.SCE_STRAFE_PPS] * (scenario[SCE_DATA.SCE_STRAFE_MAX] - scenario[SCE_DATA.SCE_STRAFE_MIN]), strings_units[lang_type][0]), 
     HudPosition.LEFT, 
     -3, 
-    rgb((100 - (localPlayer.strafe_timer - scenario[SCENARIO_DATA.SCE_STRAFE_MIN]) / (scenario[SCENARIO_DATA.SCE_STRAFE_MAX] - scenario[SCENARIO_DATA.SCE_STRAFE_MIN]) * 100)/100*255,
-        ((localPlayer.strafe_timer - scenario[SCENARIO_DATA.SCE_STRAFE_MIN]) / (scenario[SCENARIO_DATA.SCE_STRAFE_MAX] - scenario[SCENARIO_DATA.SCE_STRAFE_MIN]))*255,
+    rgb((100 - (localPlayer.strafe_timer - scenario[SCE_DATA.SCE_STRAFE_MIN]) / (scenario[SCE_DATA.SCE_STRAFE_MAX] - scenario[SCE_DATA.SCE_STRAFE_MIN]) * 100)/100*255,
+        ((localPlayer.strafe_timer - scenario[SCE_DATA.SCE_STRAFE_MIN]) / (scenario[SCE_DATA.SCE_STRAFE_MAX] - scenario[SCE_DATA.SCE_STRAFE_MIN]))*255,
         0
     ),
     Color.WHITE,
@@ -181,13 +181,13 @@ def create_stats_hud():
 
     # Game Mode Progress bar
     progressBarHud([i for i in localPlayer if localPlayer.player_scenario_status], 
-    localPlayer.scenario_timer / scenario[SCENARIO_DATA.SCE_GAME_LIMIT] * 100 if scenario[SCENARIO_DATA.SCE_GAME_MODE] == 0 else localPlayer.player_score / scenario[SCENARIO_DATA.SCE_GAME_LIMIT] * 100, 
-    "{0} / {1} {2}".format(localPlayer.scenario_timer if scenario[SCENARIO_DATA.SCE_GAME_MODE] == 0 else localPlayer.player_score, scenario[SCENARIO_DATA.SCE_GAME_LIMIT], strings_units[lang_type][1] if scenario[SCENARIO_DATA.SCE_GAME_MODE] == 0 else strings_units[lang_type][0]), 
+    localPlayer.scenario_timer / scenario[SCE_DATA.SCE_GAME_LIMIT] * 100 if scenario[SCE_DATA.SCE_GAME_MODE] == 0 else localPlayer.player_score / scenario[SCE_DATA.SCE_GAME_LIMIT] * 100, 
+    "{0} / {1} {2}".format(localPlayer.scenario_timer if scenario[SCE_DATA.SCE_GAME_MODE] == 0 else localPlayer.player_score, scenario[SCE_DATA.SCE_GAME_LIMIT], strings_units[lang_type][1] if scenario[SCE_DATA.SCE_GAME_MODE] == 0 else strings_units[lang_type][0]), 
     HudPosition.TOP, 
     -99, 
     rgb(
-        (100 - localPlayer.scenario_timer / scenario[SCENARIO_DATA.SCE_GAME_LIMIT] * 100)/100*255 if scenario[SCENARIO_DATA.SCE_GAME_MODE] == 0 else (100 - localPlayer.player_score / scenario[SCENARIO_DATA.SCE_GAME_LIMIT] * 100)/100*255, 
-        (localPlayer.scenario_timer / scenario[SCENARIO_DATA.SCE_GAME_LIMIT])*255 if scenario[SCENARIO_DATA.SCE_GAME_MODE] == 0 else (localPlayer.player_score / scenario[SCENARIO_DATA.SCE_GAME_LIMIT])*255, 
+        (100 - localPlayer.scenario_timer / scenario[SCE_DATA.SCE_GAME_LIMIT] * 100)/100*255 if scenario[SCE_DATA.SCE_GAME_MODE] == 0 else (100 - localPlayer.player_score / scenario[SCE_DATA.SCE_GAME_LIMIT] * 100)/100*255, 
+        (localPlayer.scenario_timer / scenario[SCE_DATA.SCE_GAME_LIMIT])*255 if scenario[SCE_DATA.SCE_GAME_MODE] == 0 else (localPlayer.player_score / scenario[SCE_DATA.SCE_GAME_LIMIT])*255, 
         0
     ), 
     Color.WHITE, 

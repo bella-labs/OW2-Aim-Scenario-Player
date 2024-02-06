@@ -309,7 +309,8 @@ rule "Load Language Data":
     strings_msg = [
         [
             "No Scenario Data Loaded",
-            "Wants to Start the Scenario"
+            "Wants to Start the Scenario",
+            "Bot #"
 
         ]
     ]
