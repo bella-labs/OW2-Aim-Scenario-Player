@@ -239,6 +239,7 @@ subroutine new_menu_item_4var
 subroutine act_main_sel_lang
 subroutine act_main_open_hero_sel
 subroutine act_main_player_start
+subroutine subact_main_alert_host
 subroutine act_main_host_sel_sce
 subroutine act_main_host_sel_type
 subroutine act_main_host_start
@@ -390,3 +391,4 @@ playervar player_score
 globalvar team_score
 
 subroutine teleport_all_players
+globalvar bad_data

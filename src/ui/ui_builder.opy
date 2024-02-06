@@ -70,41 +70,73 @@ def create_stats_hud():
     @Name "SUB: create_stats_hud"
 
     # Scenario Name
-    hudSubtext(localPlayer, scenario_names[scenario_index], HudPosition.RIGHT, -9999, Color.WHITE, HudReeval.VISIBILITY_SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
+    hudSubtext(localPlayer, scenario_names[scenario_index], HudPosition.RIGHT, -100, Color.WHITE, HudReeval.VISIBILITY_SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
+    
     # Author
-    hudSubheader(localPlayer, "{0}{1}\n".format(strings_hud[localPlayer.lang_type][0], scenario_authors[scenario_index]), HudPosition.RIGHT, -9998, Color.WHITE, HudReeval.VISIBILITY_SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
+    hudSubheader(localPlayer, "{0}{1}\n".format(strings_hud[localPlayer.lang_type][0], scenario_authors[scenario_index]), HudPosition.RIGHT, -99, Color.WHITE, HudReeval.VISIBILITY_SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)
 
     # Team Score Display
     hudSubheader([i for i in localPlayer if getNumberOfPlayers(Team.1) > 1 and game_type != GAME_TYPES.VERSUS],
     "{0}\n---------------------\n{1}\n---------------------\n\n".format(strings_hud[localPlayer.lang_type][1], team_score),
     HudPosition.RIGHT, 
-    -997, 
+    -98, 
     Color.TEAM_1, 
+    HudReeval.VISIBILITY_SORT_ORDER_STRING_AND_COLOR, 
+    SpecVisibility.ALWAYS)
+
+    # Versus Score Display
+    hudSubheader([i for i in localPlayer if scenario_type == GAME_TYPES.VERSUS],
+    "{0}\n---------------------\n{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}{11}{12}---------------------\n\n".format(strings_hud[localPlayer.lang_type][2], 
+
+        "{0} : ".format(getPlayersInSlot(0, Team.1)) if getPlayersInSlot(0, Team.1) != null else "", 
+        "{0}\n".format(getPlayersInSlot(0, Team.1).high_score) if getPlayersInSlot(0, Team.1) != null else "",
+
+        "{0} : ".format(getPlayersInSlot(1, Team.1)) if getPlayersInSlot(1, Team.1) != null else "", 
+        "{0}\n".format(getPlayersInSlot(1, Team.1).high_score) if getPlayersInSlot(1, Team.1) != null else "",
+
+        "{0} : ".format(getPlayersInSlot(2, Team.1)) if getPlayersInSlot(2, Team.1) != null else "", 
+        "{0}\n".format(getPlayersInSlot(2, Team.1).high_score) if getPlayersInSlot(2, Team.1) != null else "",
+
+        "{0} : ".format(getPlayersInSlot(3, Team.1)) if getPlayersInSlot(3, Team.1) != null else "", 
+        "{0}\n".format(getPlayersInSlot(3, Team.1).high_score) if getPlayersInSlot(3, Team.1) != null else "",
+
+        "{0} : ".format(getPlayersInSlot(4, Team.1)) if getPlayersInSlot(4, Team.1) != null else "", 
+        "{0}\n".format(getPlayersInSlot(4, Team.1).high_score) if getPlayersInSlot(4, Team.1) != null else "",
+
+        "{0} : ".format(getPlayersInSlot(5, Team.1)) if getPlayersInSlot(5, Team.1) != null else "", 
+        "{0}\n".format(getPlayersInSlot(5, Team.1).high_score) if getPlayersInSlot(5, Team.1) != null else "",
+
+        "{0} : ".format(getPlayersInSlot(6, Team.1)) if getPlayersInSlot(6, Team.1) != null else "", 
+        "{0}\n".format(getPlayersInSlot(6, Team.1).high_score) if getPlayersInSlot(6, Team.1) != null else ""
+        ),
+    HudPosition.RIGHT, 
+    -97, 
+    Color.TEAM_2, 
     HudReeval.VISIBILITY_SORT_ORDER_STRING_AND_COLOR, 
     SpecVisibility.ALWAYS)
 
     # Score Display
     hudSubheader([i for i in localPlayer],
-    "{0}\n---------------------\n{1}\n---------------------\n\n".format(strings_hud[localPlayer.lang_type][2], localPlayer.score),
+    "{0}\n---------------------\n{1}\n---------------------\n\n".format(strings_hud[localPlayer.lang_type][3], localPlayer.score),
     HudPosition.RIGHT, 
-    -997, 
+    -96, 
     Color.WHITE, 
     HudReeval.VISIBILITY_SORT_ORDER_STRING_AND_COLOR, 
     SpecVisibility.ALWAYS)
 
     # High Score Display
     hudSubheader([i for i in localPlayer],
-    "{0}\n---------------------\n{1}\n---------------------\n\n".format(strings_hud[localPlayer.lang_type][3], localPlayer.high_score),
+    "{0}\n---------------------\n{1}\n---------------------\n\n".format(strings_hud[localPlayer.lang_type][4], localPlayer.high_score),
     HudPosition.RIGHT, 
-    -996, 
+    -95, 
     Color.GREEN, 
     HudReeval.VISIBILITY_SORT_ORDER_STRING_AND_COLOR, 
     SpecVisibility.ALWAYS)
 
-
+    # Previous Scores
     hudSubheader([i for i in localPlayer if localPlayer.menu_visible],
     "---------------------\n{0}\n---------------------\n\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}\n{7}\n{8}\n{9}\n{10}\n{11}\n{12}\n{13}\n{14}\n{15}\n{16}\n{17}\n{18}\n{19}\n{20}".format(
-            strings_hud[localPlayer.lang_type][4],
+            strings_hud[localPlayer.lang_type][5],
             localPlayer.stat_data[0] if localPlayer.stat_data[0] != null else "",
             localPlayer.stat_data[1] if localPlayer.stat_data[1] != null else "",
             localPlayer.stat_data[2] if localPlayer.stat_data[2] != null else "",
@@ -128,12 +160,10 @@ def create_stats_hud():
 
     ),
     HudPosition.RIGHT, 
-    9999, 
+    -94, 
     Color.BLACK, 
     HudReeval.VISIBILITY_SORT_ORDER_STRING_AND_COLOR, 
     SpecVisibility.ALWAYS)
-
-
 
     # Strafe Progress Bar
     progressBarHud([i for i in localPlayer if localPlayer.player_scenario_status and scenario[SCENARIO_DATA.SCE_STRAFE_PPS] > 0],  
@@ -206,7 +236,8 @@ def create_host_menu():
     increment_for_menu_item()
     eventPlayer.menu_item_title_off[eventPlayer.menu_item_size] = strings_host_menu[eventPlayer.lang_type][eventPlayer.menu_max_pos]
     eventPlayer.menu_item_title_on[eventPlayer.menu_item_size] = eventPlayer.menu_item_title_off[eventPlayer.menu_item_size]
-    new_menu_item_selection()
+    eventPlayer.menu_item_var_1[eventPlayer.menu_item_size] = strings_options[eventPlayer.lang_type][OPTIONS_TYPE.MODE][scenario_type]
+    new_menu_item_cycle()
 
     # (Header) Player
     increment_for_menu_label()

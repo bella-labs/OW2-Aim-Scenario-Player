@@ -8,7 +8,7 @@ def act_main_sel_lang():
     eventPlayer.lang_type = eventPlayer.action_result
     if eventPlayer.action_var != eventPlayer.action_result:
         update_language()
-    
+
 
 def act_main_open_hero_sel():
     @Name "SUB: act_main_open_hero_sel"
@@ -22,7 +22,13 @@ def act_main_player_start():
     @Name "SUB: act_main_player_start"
 
     if game_type != GAME_TYPES.VERSUS:
-        smallMessage(hostPlayer, "    {0} {1}".format(eventPlayer, strings_msg[hostPlayer.lang_type][1]))
+        async(subact_main_alert_host, AsyncBehavior.NOOP)
     else:
         start_player_scenario()
     
+
+def subact_main_alert_host():
+    @Name "SUB: subact_main_alert_host"
+
+    smallMessage(hostPlayer, "    {0} {1}".format(eventPlayer, strings_msg[hostPlayer.lang_type][1]))
+    wait(5)

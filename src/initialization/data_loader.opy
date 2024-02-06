@@ -21,14 +21,16 @@ rule "Load Scenario Data":
         scenarios = eventPlayer.export_data
         scenario = scenarios[scenario_index]
     else:
-        display_missing_data_msg()
+        bad_data = true
 
     destroyDummy(eventPlayer.getTeam(), eventPlayer.getSlot())
 
 
-def display_missing_data_msg():
-    @Name "SUB: display_missing_data_msg"
+rule "Display Error for BAD DATA":
+    @Event eachPlayer
+    @Condition eventPlayer == hostPlayer
+    @Condition eventPlayer.hasSpawned()
+    @Condition bad_data == true
 
-    increment_for_menu_label()
-    eventPlayer.menu_label[0] = strings_msg[eventPlayer.lang_type][1]
-    new_menu_label_subheader()
+    waitUntil(hostPlayer.isAlive(), 9999)
+    hudHeader(hostPlayer, "NO SCENARIO DATA LOADED", HudPosition.TOP, -9999, Color.RED, HudReeval.VISIBILITY_SORT_ORDER_STRING_AND_COLOR, SpecVisibility.ALWAYS)

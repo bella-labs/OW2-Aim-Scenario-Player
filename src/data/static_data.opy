@@ -298,8 +298,9 @@ rule "Load Language Data":
         [
             "By: ",
             "Team Score",
+            "Versus Scores",
             "Player Score",
-            "High Score",
+            "Player High Score",
             "Previous Scores"
 
         ]
