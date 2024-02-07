@@ -8,7 +8,7 @@ globalvar user_controls
 globalvar ui_delay
 globalvar ui_inputs
 ## Game Mode Data
-## Storage 
+## Storage
 globalvar scenario
 globalvar scenarios
 globalvar scenario_index
@@ -100,7 +100,7 @@ enum DATA_TYPE:
     STATIC = 0,
     CONTROLS,
     SCENARIO
-    
+
 enum GENERAL_TARGET:
     VECT_X = 0,
     VECT_Y,
@@ -125,7 +125,7 @@ enum TAG_TYPE:
     SCE_POINTS,
     POINTS,
     STRAFE
-    
+
 
 enum OPTIONS_TYPE:
     LANG = 0,
@@ -152,12 +152,6 @@ enum XZ_DIR:
 enum YDIR:
     UP = 0,
     DOWN
-
-
-
-
-
-
 
 playervar menu_visible
 playervar menu_action
@@ -393,3 +387,16 @@ globalvar team_score
 
 subroutine teleport_all_players
 subroutine create_target_bot
+
+globalvar scenario_bot
+globalvar scenario_bot_index
+globalvar bot_gen_hero
+globalvar bot_gen_team
+globalvar bot_gen_slot
+globalvar bot_gen_position
+globalvar bot_gen_facing
+subroutine show_next_bot
+subroutine load_scenario_bots
+
+subroutine restart_scenario
+subroutine restart_versus_scenario
